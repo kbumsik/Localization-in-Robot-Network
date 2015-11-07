@@ -1,0 +1,48 @@
+%review for reading task 1 by Zhe Yan%
+\documentclass{article}
+\usepackage[top=1in, bottom=1in, left=1.25in, right=1.25in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{fancyhdr}\pagestyle{fancy}
+%\usepackage{algorithmic}
+\usepackage[]{algorithm2e}
+\usepackage{bm}
+\begin{document}
+\newcommand{\lfront}{\fontsize{17.28pt}{\baselineskip}\selectfont}
+\newcommand{\mfront}{\fontsize{12pt}{\baselineskip}\selectfont}
+\newcommand{\sfront}{\fontsize{9pt}{\baselineskip}\selectfont}
+\fancyhead[L]{\sfront{Zhe Yan 109241227}}
+\fancyhead[R]{\sfront{\today}}
+\begin{center}
+\lfront{\textbf{Review of iGaze}}
+\end{center}
+
+\section{Summary}
+\qquad In this paper, they proposed a networking mechanism with smart glasses, through which users can express their interest and connect to a target simply by a gaze. To achieve that, they designed this iGaze system. The motivation of this work is to let wearable devices understand human attention and intention and pair the device.  \\
+
+\indent The main idea of this paper is to design both software and hardware components for visual attention driven networking and the smart glasses hardware. The first component is the gaze vector acquisition part. The real-time eye tracking module captures the movement of a user's eye using the eye camera at real time. Attention acquisition component takes the eye movement data  as input to detect a visual attention when the gaze lasts for a reasonable time. After the visual attention is captured, the gaze vector determination will calculate the corresponding gaze vector to the visual target by acoustic signal. The second component is the device vector estimation which is designed for the target devices to invoke. The last component is VAN which form a network and standard to process these data.\\
+
+\indent In the evaluation part, this paper shows the accuracy and the efficiency of this proposed system. The system can work for both smart devices and the social applications. The energy consumption is also optimized in this work. To conclude, the idea and aspect of constructing this VAN is impressive and create a new aspect of utilizing smart devices.
+
+\section{Strength}
+\begin{itemize}
+\item The paper proposed a complete system including hardware and software in this work which has a relatively new aspect of making use of devices.
+\item Pairing the devices with a gaze or corresponding gesture is relatively easier for users to use when the pattern recognition has high accuracy.
+\item They spend some effort optimizing and making protocols. It will make this system more practical.
+\end{itemize}
+
+\section{Weakness}
+\begin{itemize}
+\item The experimental part may need more comparison and graph to convince the user that the scheme can really work efficiently and accurately.
+\item After the recognition, they added an additional gesture to help the recognition, but the gesture may not be necessary in some case.
+\item As the author mentioned in the paper, privacy protection might be a big problem in the future work.
+\end{itemize}
+
+
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=1.0\linewidth]{img/8_1}
+%\caption{Created only one directed edge between each node itself}
+%\label{fig4}
+%\end{figure}
+\end{document}

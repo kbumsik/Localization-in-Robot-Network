@@ -1,2 +1,8 @@
 # Localization-in-Robot-Network
-ROBOTSSSSSSSSSSSSSSSSSS!!!!!!!!!!!!!
+The main project is 'simulation.m'.
+
+## Directory descriptions
+
+`Reference`: Materials to study about project.
+
+`Documentation`: Papers for this project. 
