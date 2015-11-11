@@ -6,3 +6,5 @@ The main project is 'simulation.m'.
 `Reference`: Materials to study about project.
 
 `Documentation`: Papers for this project. 
+
+`Notes`: Notes discussed during meetings
