@@ -54,5 +54,5 @@ p3 = raylpdf(x,2);
 hold on;
 plot(x,p1,'--',x,p2,'--',x,p3,'--');
 %plot(x,sin(x),'d');
-
+plot(x,(p1*sin(x)),x,(p2*sin(x)),x,(p3*sin(x)));
 hold off;
