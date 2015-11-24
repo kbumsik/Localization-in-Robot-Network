@@ -58,36 +58,24 @@ for i = 1: numOfObjects;
     
 end
 hold off;
-<<<<<<< HEAD
 
-%%
-%rayleigh distrubution simulate
-load hospital
-
-x = [0:0.01:10];
-p1 = raylpdf(x,0.5);
-p2 = raylpdf(x,1);
-p3 = raylpdf(x,2);
-pd=fitdist(x,'Rayleigh')
-hold on;
-plot(x,p1,'--',x,p2,'--',x,p3,'--');
-%plot(x,sin(x),'d');
-
-hold off;
-=======
 set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
     'xtick', 0:50:xField, 'ytick', 0:50:yField); % set the limit of the plot
 
 
 %==========================================================================
 
-%% Calculate the signal strength
-distance = norm(robot(1).position-robot(2).position);
-line([robot(1).getX robot(2).getX], [robot(1).getY robot(2).getY]);
+    p1 = raylpdf(x,0.5);
+    p2 = raylpdf(x,1);
+    p3 = raylpdf(x,2);
+    plot(x,p1,x,p2,x,p3);
+%%
+%rayleigh distrubution simulate
 
-%  Measureing power of signal using path loss
-Pr = Pt -20*log10(distance)-20*log10(freq)-20*log10(4*pi/CONST_C);
-
-% Adding Additive gaussian noise
-Pr = Pr + normrnd(0,2) % adding a random number from normal distribution
->>>>>>> origin/master
+pd=makedist('Rayleigh');
+hold on;
+ for x1 = 1: 1001;
+    y(x1)=random(pd); 
+ end
+ plot(x,y+sin(x));
+hold off;
