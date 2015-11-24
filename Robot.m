@@ -3,8 +3,7 @@ classdef Robot
       sensory
       communication
       reject
-      x
-      y
+      position %contains [x,y]
    end
    methods
       function obj = Robot(x_pos, y_pos, sen, com, rej)
@@ -24,33 +23,41 @@ classdef Robot
              error('Value must be numeric')
          end
          if isnumeric(x_pos)
-             obj.x = x_pos;
+             obj.position(1) = x_pos;
          else
              error('Value must be numeric')
          end
          if isnumeric(y_pos)
-             obj.y = y_pos;
+             obj.position(2) = y_pos;
          else
              error('Value must be numeric')
          end
       end
 
       function drawSensory(obj)
-         drawCircle(obj.x, obj.y, obj.sensory);
+         drawCircle(obj.position(1), obj.position(2), obj.sensory);
       end
 
       function drawCommunication(obj)
-         drawCircle(obj.x, obj.y, obj.communication);
+         drawCircle(obj.position(1), obj.position(2), obj.communication);
       end
 
       function drawReject(obj)
-         drawCircle(obj.x, obj.y, obj.reject);
+         drawCircle(obj.position(1), obj.position(2), obj.reject);
       end
 
       function drawAll(obj)
          drawSensory(obj);
          drawCommunication(obj);
          drawReject(obj);
+      end
+      
+      function x = getX(obj)
+         x = obj.position(1);
+      end
+      
+      function y = getY(obj)
+         y = obj.position(2);
       end
    end
 end
