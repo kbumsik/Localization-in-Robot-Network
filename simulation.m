@@ -46,11 +46,13 @@ hold off;
 
 %%
 %rayleigh distrubution simulate
+load hospital
 
 x = [0:0.01:10];
 p1 = raylpdf(x,0.5);
 p2 = raylpdf(x,1);
 p3 = raylpdf(x,2);
+pd=fitdist(x,'Rayleigh')
 hold on;
 plot(x,p1,'--',x,p2,'--',x,p3,'--');
 %plot(x,sin(x),'d');
