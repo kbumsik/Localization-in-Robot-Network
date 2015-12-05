@@ -79,3 +79,10 @@ hold on;
  end
  plot(x,y+sin(x));
 hold off;
+
+%%
+% P?total loss)=P(path-loss)+           P(rayleigh-fading)+   a*P(noise)
+%           20*10log(d)+20log(f)-147.55                       a*variance^2
+%in db:L(d) = L(d0) + 10 ? log (d/d0), d0=refrence distance
+% assume Pt=100db=10^10W
+P=20*10*log(d)+20*log(f)-147.55  + 10*log(d0)+10*4*log(d/d0) + 0.05*1;
