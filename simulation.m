@@ -7,11 +7,11 @@ clc;   clear all;   close all;
 
 % a little change
 %$ set constants
-xField = 600;       % in meters
-yField = 600;       % in meters
-sens = 80;          % in meters
-comm = 50;          % in meters
-reject = 40;        % in meters
+xField = 1000;       % in meters
+yField = 1000;       % in meters
+sens = 30;          % in meters
+comm = 20;          % in meters
+reject = 10;        % in meters
 numOfObjects = 2;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz

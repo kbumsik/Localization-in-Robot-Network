@@ -1,14 +1,12 @@
-classdef Robot
+classdef Tranceiver
    properties
       sensory
       communication
       reject
       position %contains [x,y]
-      transmitter
-      receiver
    end
    methods
-      function obj = Robot(x_pos, y_pos, sen, com, rej)
+      function obj = Tranceiver(x_pos, y_pos, sen, com, rej)
          if isnumeric(sen)
              obj.sensory = sen;
          else
@@ -34,24 +32,24 @@ classdef Robot
          else
              error('Value must be numeric')
          end
-         
-         % Create transmitter
-         obj.transmitter = Tranceiver(x_pos, y_pos, sen, com, rej);
-         
-         % Create the first receiver
-         obj.receiver(1) = Tranceiver(x_pos-0.3, y_pos+0.3, sen, com, rej);
-         obj.receiver(2) = Tranceiver(x_pos+0.3, y_pos+0.3, sen, com, rej);
-         obj.receiver(3) = Tranceiver(x_pos+0.3, y_pos-0.3, sen, com, rej);
-         obj.receiver(4) = Tranceiver(x_pos-0.3, y_pos-0.3, sen, com, rej);
-         
+      end
+
+      function drawSensory(obj)
+         drawCircle(obj.position(1), obj.position(2), obj.sensory);
+      end
+
+      function drawCommunication(obj)
+         drawCircle(obj.position(1), obj.position(2), obj.communication);
+      end
+
+      function drawReject(obj)
+         drawCircle(obj.position(1), obj.position(2), obj.reject);
       end
 
       function drawAll(obj)
-         drawAll(obj.transmitter);
-         drawAll(obj.receiver(1));
-         drawAll(obj.receiver(2));
-         drawAll(obj.receiver(3));
-         drawAll(obj.receiver(4));
+         drawSensory(obj);
+         drawCommunication(obj);
+         drawReject(obj);
       end
       
       function x = getX(obj)
