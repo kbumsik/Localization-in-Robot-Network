@@ -64,29 +64,23 @@ set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
 
 
 %% get signal in each robot
-signalStrength = zeros(numOfObjects,numOfObjects,4);
+signalStrength = zeros(numOfObjects,4);
 for i = 1:numOfObjects
-    for j = 1:numOfObjects
-        if (i ==j)
-            continue
-        end
-        signalStrength(i,j,:) = getStrength(robot(i),robot(j));
-    end
-end
-
+    for j
 %% ==========================================================================
     p1 = raylpdf(x,0.5);
     p2 = raylpdf(x,1);
     p3 = raylpdf(x,2);
     plot(x,p1,x,p2,x,p3);
-%%
+    
+%% ==========================================================================
 %rayleigh distrubution simulate
 pd=makedist('Rayleigh');
 hold on;
  for x1 = 1: 1001;
     y(x1)=random(pd); 
  end
- plot(x,y+sin(x));
+ plot(x1,y+sin(x1));
 hold off;
 
 %%

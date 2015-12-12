@@ -39,7 +39,7 @@ classdef Robot
          obj.transmitter = Tranceiver(x_pos, y_pos, sen, com, rej);
          
          % Create the first receiver
-         obj.receiver(1) = Tranceiver(x_pos-0.3, y_pos+0.3, sen, com, rej);
+         obj.receiver = Tranceiver(x_pos-0.3, y_pos+0.3, sen, com, rej);
          obj.receiver(2) = Tranceiver(x_pos+0.3, y_pos+0.3, sen, com, rej);
          obj.receiver(3) = Tranceiver(x_pos+0.3, y_pos-0.3, sen, com, rej);
          obj.receiver(4) = Tranceiver(x_pos-0.3, y_pos-0.3, sen, com, rej);
@@ -52,7 +52,7 @@ classdef Robot
          drawAll(obj.receiver(2));
          drawAll(obj.receiver(3));
          drawAll(obj.receiver(4));
-      end
+      end % drawAll
       
       function x = getX(obj)
          x = obj.position(1);
@@ -61,5 +61,8 @@ classdef Robot
       function y = getY(obj)
          y = obj.position(2);
       end
+      
+      function rStrength = getStrength(obj, targetRobot)
+          rStrength = getSignalStrength(obj.position-targetRobot.position
    end
 end

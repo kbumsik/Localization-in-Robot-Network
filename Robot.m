@@ -52,7 +52,7 @@ classdef Robot
          drawAll(obj.receiver(2));
          drawAll(obj.receiver(3));
          drawAll(obj.receiver(4));
-      end
+      end % drawAll
       
       function x = getX(obj)
          x = obj.position(1);
@@ -61,5 +61,14 @@ classdef Robot
       function y = getY(obj)
          y = obj.position(2);
       end
+      
+      % Return signal strength of each receivers
+      function rStrength = getStrength(obj, targetRobot)
+          rStrength = getSignalStrength(pdist2(obj.receiver(1).position,targetRobot.position,'euclidean'));
+          rStrength(2) = getSignalStrength(pdist2(obj.receiver(2).position,targetRobot.position,'euclidean'));
+          rStrength(3) = getSignalStrength(pdist2(obj.receiver(3).position,targetRobot.position,'euclidean'));
+          rStrength(4) = getSignalStrength(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
+      end
+      
    end
 end
