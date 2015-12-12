@@ -91,7 +91,18 @@ hold off;
 
 %%
 % P?total loss)=P(path-loss)+           P(rayleigh-fading)+   a*P(noise)
-%           20*10log(d)+20log(f)-147.55                       a*variance^2
-%in db:L(d) = L(d0) + 10 ? log (d/d0), d0=refrence distance
-% assume Pt=100db=10^10W
-P=20*10*log(d)+20*log(f)-147.55  + 10*log(d0)+10*4*log(d/d0) + 0.05*1;
+%           20log(d)+20log(f)-147.55                       a*variance^2
+%in db:L(d) = L(d0) + 10 *y* log (d/d0), d0=refrence distance=1.8m
+%L(d0)=-27.25 db
+% assume Pt=100db=10^10W   freq=2.4GHz   
+%L(d0)=27.25;
+f=2.4*10^9;
+d=900;
+d0=1.8;
+P= -27.25-20*log10(d/d0) + 0.05*1;
+
+%% plot distance vs power plot
+
+t = [0:0.1:200];
+y= -27.25-20*log10(t/d0) + 1*randn(size(t));
+plot(t,y);
