@@ -74,6 +74,12 @@ for i = 1:numOfObjects
     end
 end
 
+%% plot distance vs power plot
+figure(2);
+t = [0:0.1:200];
+y= getSignalStrength(t);
+plot(t,y);
+
 %% ==========================================================================
     p1 = raylpdf(x,0.5);
     p2 = raylpdf(x,1);
@@ -88,21 +94,3 @@ hold on;
  end
  plot(x,y+sin(x));
 hold off;
-
-%%
-% P?total loss)=P(path-loss)+           P(rayleigh-fading)+   a*P(noise)
-%           20log(d)+20log(f)-147.55                       a*variance^2
-%in db:L(d) = L(d0) + 10 *y* log (d/d0), d0=refrence distance=1.8m
-%L(d0)=-27.25 db
-% assume Pt=100db=10^10W   freq=2.4GHz   
-%L(d0)=27.25;
-f=2.4*10^9;
-d=900;
-d0=1.8;
-P= -27.25-20*log10(d/d0) + 0.05*1;
-
-%% plot distance vs power plot
-
-t = [0:0.1:200];
-y= -27.25-20*log10(t/d0) + 1*randn(size(t));
-plot(t,y);
