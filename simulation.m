@@ -77,7 +77,8 @@ end
 %% plot distance vs power plot
 figure(2);
 t = [0:0.1:200];
-y= getSignalStrengd
+y= getSignalStrength(t);
+plot(t,y);
 
 %% ==========================================================================
     p1 = raylpdf(x,0.5);
