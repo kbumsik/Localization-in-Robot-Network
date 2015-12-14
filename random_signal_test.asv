@@ -8,7 +8,7 @@ x = [0:0.01:10];
 %rayleigh distrubution simulate
 pd=makedist('Rayleigh');
 
- for x1 = 1: 1001
+ for x1 = 1: 101
     y(x1)=random(pd); 
  end
  figure(3);
