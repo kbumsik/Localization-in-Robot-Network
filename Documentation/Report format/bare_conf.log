@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  16 DEC 2015 15:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  16 DEC 2015 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -439,25 +439,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
-<C:/Users/JJ/Desktop/noise1.png, id=1, 566.115pt x 505.89pt>
-File: C:/Users/JJ/Desktop/noise1.png Graphic file (type png)
-
-<use C:/Users/JJ/Desktop/noise1.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/noise1.png used on input line 11.
+<./graph/noise1.png, id=1, 566.115pt x 505.89pt>
+File: ./graph/noise1.png Graphic file (type png)
+ <use ./graph/noise1.png>
+Package pdftex.def Info: ./graph/noise1.png used on input line 11.
 (pdftex.def)             Requested size: 75.60077pt x 67.55115pt.
 
-<C:/Users/JJ/Desktop/noise2.png, id=3, 563.10374pt x 507.8975pt>
-File: C:/Users/JJ/Desktop/noise2.png Graphic file (type png)
-
-<use C:/Users/JJ/Desktop/noise2.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/noise2.png used on input line 17.
+<./graph/noise2.png, id=3, 563.10374pt x 507.8975pt>
+File: ./graph/noise2.png Graphic file (type png)
+ <use ./graph/noise2.png>
+Package pdftex.def Info: ./graph/noise2.png used on input line 17.
 (pdftex.def)             Requested size: 75.60077pt x 68.18346pt.
 
-<C:/Users/JJ/Desktop/noise3.png, id=4, 561.09625pt x 506.89375pt>
-File: C:/Users/JJ/Desktop/noise3.png Graphic file (type png)
-
-<use C:/Users/JJ/Desktop/noise3.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/noise3.png used on input line 23.
+<./graph/noise3.png, id=4, 561.09625pt x 506.89375pt>
+File: ./graph/noise3.png Graphic file (type png)
+ <use ./graph/noise3.png>
+Package pdftex.def Info: ./graph/noise3.png used on input line 23.
 (pdftex.def)             Requested size: 75.60077pt x 68.2962pt.
 
 Underfull \hbox (badness 3407) in paragraph at lines 24--24
@@ -475,45 +472,40 @@ Underfull \hbox (badness 1558) in paragraph at lines 7--8
 [1{e:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <c:/Users/JJ/Desktop/noise1.png> <c:/Users/JJ/Desktop/noise2.png> <c:/Users/JJ
-/Desktop/noise3.png>]
+ <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
  []
 
-<C:/Users/JJ/Desktop/simulation1.png, id=19, 618.31pt x 579.16376pt>
-File: C:/Users/JJ/Desktop/simulation1.png Graphic file (type png)
+<./graph/simulation1.png, id=19, 618.31pt x 579.16376pt>
+File: ./graph/simulation1.png Graphic file (type png)
 
-<use C:/Users/JJ/Desktop/simulation1.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/simulation1.png used on input line
- 18.
+<use ./graph/simulation1.png>
+Package pdftex.def Info: ./graph/simulation1.png used on input line 18.
 (pdftex.def)             Requested size: 100.79846pt x 94.40904pt.
 
-<C:/Users/JJ/Desktop/simulation2.png, id=20, 618.31pt x 579.16376pt>
-File: C:/Users/JJ/Desktop/simulation2.png Graphic file (type png)
+<./graph/simulation2.png, id=20, 618.31pt x 579.16376pt>
+File: ./graph/simulation2.png Graphic file (type png)
 
-<use C:/Users/JJ/Desktop/simulation2.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/simulation2.png used on input line
- 23.
+<use ./graph/simulation2.png>
+Package pdftex.def Info: ./graph/simulation2.png used on input line 23.
 (pdftex.def)             Requested size: 100.79846pt x 94.40904pt.
 
-<C:/Users/JJ/Desktop/simulation3.png, id=21, 618.31pt x 579.16376pt>
-File: C:/Users/JJ/Desktop/simulation3.png Graphic file (type png)
+<./graph/simulation3.png, id=21, 618.31pt x 579.16376pt>
+File: ./graph/simulation3.png Graphic file (type png)
 
-<use C:/Users/JJ/Desktop/simulation3.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/simulation3.png used on input line
- 28.
+<use ./graph/simulation3.png>
+Package pdftex.def Info: ./graph/simulation3.png used on input line 28.
 (pdftex.def)             Requested size: 100.79846pt x 94.40904pt.
 
-<C:/Users/JJ/Desktop/simulation4.png, id=22, 456.95718pt x 429.10312pt>
-File: C:/Users/JJ/Desktop/simulation4.png Graphic file (type png)
+<./graph/simulation4.png, id=22, 456.95718pt x 429.10312pt>
+File: ./graph/simulation4.png Graphic file (type png)
 
-<use C:/Users/JJ/Desktop/simulation4.png>
-Package pdftex.def Info: C:/Users/JJ/Desktop/simulation4.png used on input line
- 33.
+<use ./graph/simulation4.png>
+Package pdftex.def Info: ./graph/simulation4.png used on input line 33.
 (pdftex.def)             Requested size: 100.79846pt x 94.65178pt.
-) (./sec4_Evaluation.tex)
-(./sec5_Conclusion.tex) (./bare_conf.bbl)
+) (./sec4_Evaluation.tex) (./sec5_Conclusion.tex)
+(./bare_conf.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -527,23 +519,23 @@ Before submitting the final camera ready copy, remember to:
 
 [2
 
- <c:/Users/JJ/Desktop/simulation1.png> <c:/Users/JJ/Desktop/simulation2.png> <c
-:/Users/JJ/Desktop/simulation3.png> <c:/Users/JJ/Desktop/simulation4.png>]
-(./bare_conf.aux) ) 
+ <./graph/simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> 
+<./graph/simulation4.png>] (./bare_conf.aux) ) 
 Here is how much of TeX's memory you used:
  5590 strings out of 493054
- 78859 string characters out of 6138327
- 175499 words of memory out of 5000000
+ 78511 string characters out of 6138327
+ 175487 words of memory out of 5000000
  8983 multiletter control sequences out of 15000+600000
  46781 words of font info for 114 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
  41i,15n,35p,625b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
-{e:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<e:/
-texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><e:/texlive/20
-15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><e:/texlive/2015/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
-b><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+{e:/texlive/2015/texmf-dist/fonts
+/enc/dvips/base/8r.enc}<e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/texlive/201
+5/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/texlive/2015/texmf-dist/font
+s/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/
+utmri8a.pfb>
 Output written on bare_conf.pdf (2 pages, 268628 bytes).
 PDF statistics:
  51 PDF objects out of 1000 (max. 8388607)
