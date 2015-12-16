@@ -1,7 +1,42 @@
 \section{Architecture}
 \label{sec:architecture}
+	During our modelling stage, we separate it into three parts: path loss, fading and noise. \par
+	The first step is to randomly generate a location for each robot. Each robot should have three ranges, sensory range, communication range and reject range. Sensory range is the largest range that allows each of robots to sense each other within that area. Communication range is the smaller range that allows robots to communicate with each other. Reject range is the smallest range in the case when two robots are too close, they can't sense each other, which is what we want to avoid during the simulation. In order to do this, we create three files, described as following:
 
+\begin{itemize}
+\item "drawCircle.m": A simple function to draw circle with parameters x,y and r which stands for the locations and radius. \item "Robot.m": A class that has properties called "sensory", "communication" and "reject" which hold values for the radius of each range. Properties "x" and "y" stands for the location of robots in graph to be drawn. This class has four methods of drawing circles, "drawSensory(obj)", "drawCommunication(obj)", "drawReject(obj)" and "drawAll(obj)" which can draw three types of circle range individually and in one time. 
+\item "simulation.m": The driver file that creates 8 robot object in random location in the graph. In order to avoid robots correlated with each other within the reject range, the algorithm is to keep looking for the position of a new robot until the condition satisfied and then create robot according to that position. 
+\end{itemize}
+
+\section{Simulation Result}
+\indent The following graphs are 4 simulation results that randomly allocate 8 robot objects:\\
+ 
+\begin{figure}[h]
+ 
+\begin{minipage}[h]{0.4\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{simulation1}
+	\end{minipage}
 	
+	\begin{minipage}[h]{0.4\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{simulation2}
+	\end{minipage}
+
+	\begin{minipage}[h]{0.4\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{simulation3}
+	\end{minipage}
+	
+	\begin{minipage}[h]{0.4\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{simulation4}
+	\end{minipage}
+
+\caption{Four sample simulations}
+\label{fig:image2}
+\end{figure}
+
 %\begin{figure}[h]
 %\centering
 %\includegraphics[width=0.8\linewidth]{img/img1}

@@ -6,14 +6,15 @@ x = [0:0.01:10];
     plot(x,p1,x,p2,x,p3);
 %%
 %rayleigh distrubution simulate
+ 
 pd=makedist('Rayleigh');
 
- for x1 = 1: 1001
+hold on;
+ for x1 = 1: 1001;
     y(x1)=random(pd); 
  end
- figure(3);
- hold on;
-for x1 = 1: 1001
-    plot(x1,y(x1));
-end
- hold off;
+
+% plot(x, sin(x));
+% plot(x,y);
+ plot(x,y+sin(x));
+hold off;
