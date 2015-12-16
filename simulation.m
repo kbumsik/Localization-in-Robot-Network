@@ -76,6 +76,6 @@ end
 
 %% plot distance vs power plot
 figure(2);
-t = [0:0.1:200];
+t = [0:0.1:600];
 y= getSignalStrength(t);
 plot(t,y);
