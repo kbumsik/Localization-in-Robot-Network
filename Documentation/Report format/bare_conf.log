@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  16 DEC 2015 15:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  16 DEC 2015 22:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -434,7 +434,11 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 391.
 (e:/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-(./sec1_Introduction.tex) (./sec2_Overview.tex
+(./sec1_Introduction.tex
+Missing character: There is no â in font ptmr7t!
+Missing character: There is no € in font ptmr7t!
+Missing character: There is no ” in font ptmr7t!
+) (./sec2_Overview.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
@@ -461,51 +465,54 @@ Underfull \hbox (badness 3407) in paragraph at lines 24--24
 \OT1/ptm/m/n/8 added with Rayleigh
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-) (./sec3_Architecture.tex
-Underfull \hbox (badness 1558) in paragraph at lines 7--8
-\OT1/ptm/m/n/10 "y" stands for the lo-ca-tion of robots in graph to
- []
-
 [1{e:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
- <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 12--13
+])
+(./sec3_Architecture.tex) (./sec4_Evaluation.tex
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
 
-<./graph/simulation1.png, id=19, 618.31pt x 579.16376pt>
+<./graph/simulation1.png, id=20, 588.1975pt x 560.0925pt>
 File: ./graph/simulation1.png Graphic file (type png)
 
 <use ./graph/simulation1.png>
-Package pdftex.def Info: ./graph/simulation1.png used on input line 18.
-(pdftex.def)             Requested size: 100.79846pt x 94.40904pt.
+Package pdftex.def Info: ./graph/simulation1.png used on input line 12.
+(pdftex.def)             Requested size: 100.79846pt x 95.97508pt.
 
-<./graph/simulation2.png, id=20, 618.31pt x 579.16376pt>
+<./graph/simulation2.png, id=21, 583.17876pt x 562.1pt>
 File: ./graph/simulation2.png Graphic file (type png)
 
 <use ./graph/simulation2.png>
-Package pdftex.def Info: ./graph/simulation2.png used on input line 23.
-(pdftex.def)             Requested size: 100.79846pt x 94.40904pt.
+Package pdftex.def Info: ./graph/simulation2.png used on input line 17.
+(pdftex.def)             Requested size: 100.79846pt x 97.15105pt.
 
-<./graph/simulation3.png, id=21, 618.31pt x 579.16376pt>
+<./graph/simulation3.png, id=22, 584.1825pt x 562.1pt>
 File: ./graph/simulation3.png Graphic file (type png)
 
 <use ./graph/simulation3.png>
-Package pdftex.def Info: ./graph/simulation3.png used on input line 28.
-(pdftex.def)             Requested size: 100.79846pt x 94.40904pt.
+Package pdftex.def Info: ./graph/simulation3.png used on input line 22.
+(pdftex.def)             Requested size: 100.79846pt x 96.98808pt.
 
-<./graph/simulation4.png, id=22, 456.95718pt x 429.10312pt>
+<./graph/simulation4.png, id=23, 588.1975pt x 561.09625pt>
 File: ./graph/simulation4.png Graphic file (type png)
 
 <use ./graph/simulation4.png>
-Package pdftex.def Info: ./graph/simulation4.png used on input line 33.
-(pdftex.def)             Requested size: 100.79846pt x 94.65178pt.
-) (./sec4_Evaluation.tex) (./sec5_Conclusion.tex)
-(./bare_conf.bbl)
+Package pdftex.def Info: ./graph/simulation4.png used on input line 27.
+(pdftex.def)             Requested size: 100.79846pt x 96.14708pt.
+
+<./graph/simulation5.png, id=24, 565.11125pt x 502.87875pt>
+File: ./graph/simulation5.png Graphic file (type png)
+
+<use ./graph/simulation5.png>
+Package pdftex.def Info: ./graph/simulation5.png used on input line 34.
+(pdftex.def)             Requested size: 252.0pt x 224.24457pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./sec5_Conclusion.tex) (./bare_conf.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -517,29 +524,37 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2
+[2 <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png>] [3
 
  <./graph/simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> 
-<./graph/simulation4.png>] (./bare_conf.aux) ) 
+<./graph/simulation4.png> <./graph/simulation5.png>] (./bare_conf.aux) ) 
 Here is how much of TeX's memory you used:
- 5590 strings out of 493054
- 78511 string characters out of 6138327
- 175487 words of memory out of 5000000
- 8983 multiletter control sequences out of 15000+600000
+ 5595 strings out of 493054
+ 78638 string characters out of 6138327
+ 176487 words of memory out of 5000000
+ 8987 multiletter control sequences out of 15000+600000
  46781 words of font info for 114 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,15n,35p,625b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
-{e:/texlive/2015/texmf-dist/fonts
-/enc/dvips/base/8r.enc}<e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
-fb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/texlive/201
-5/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/texlive/2015/texmf-dist/font
-s/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on bare_conf.pdf (2 pages, 268628 bytes).
+ 41i,15n,35p,1302b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
+{e:/tex
+live/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<e:/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmbx10.pfb><e:/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmex10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi5.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/texlive/2015/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb><e:/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pf
+b><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/texlive/201
+5/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-dist/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on bare_conf.pdf (3 pages, 381462 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 26 compressed objects within 1 object stream
+ 92 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
