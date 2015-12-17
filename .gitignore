@@ -1,10 +1,7 @@
 Documentation/Report format/Abstract.aux
+*.m~
 *.log
-*.dvi
-*.log
-*.gz
-Documentation/Report format/bare_conf.pdf
-*.bbl
-*.blg
-*.bbl
 *.aux
+*.blg
+*.gz
+Documentation/Report format/*.pdf
