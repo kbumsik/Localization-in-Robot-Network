@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  17 DEC 2015 14:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  17 DEC 2015 15:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -518,7 +518,7 @@ Package pdftex.def Info: ./graph/simulation5.png used on input line 34.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (./sec5_Conclusion.tex) (./bare_conf.bbl)
+) (./sec5_Conclusion.tex) (./bare_conf.bbl [2])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -530,9 +530,10 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2] [3 <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png> <./graph/
-simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> <./graph/s
-imulation4.png> <./graph/simulation5.png>] (./bare_conf.aux)
+[3 <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png>] [4
+
+ <./graph/simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> 
+<./graph/simulation4.png> <./graph/simulation5.png>] (./bare_conf.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -559,10 +560,10 @@ public/amsfonts/cm/cmsy8.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/
 utmb8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/te
 xlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-d
 ist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bare_conf.pdf (3 pages, 383090 bytes).
+Output written on bare_conf.pdf (4 pages, 384198 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 57 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  41 words of extra memory for PDF output out of 10000 (max. 10000000)
 
