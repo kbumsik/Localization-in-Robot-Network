@@ -4,22 +4,31 @@ To simplify our simulation, we decide to use a simple version of path loss, whic
 \begin{equation}
 L(d)=10*n*log_{10}d + C
 \end{equation}
-where L is the path loss in decibels, n is the path loss exponent, d is the distance between the transmitter and the receiver, usually measured in meters, and C is a constant which accounts for system losses.
+where $L$ is the path loss in decibels, $n$ is the path loss exponent, $d$ is the distance between the transmitter and the receiver, usually measured in meters, and $C$ is a constant which accounts for system losses.
 \vspace{1cm}
 \par
 Rayleigh distributed probability density function is:
 \begin{equation}
 p_{R}(r)={\frac {2r}{\Omega }}e^{-r^{2}/\Omega },\ r\geq {}0
 \end{equation}
-where R is random variable, $\Omega$ = E($R^{2}$).
+where $R$ is random variable, $\Omega = E(R^{2})$.
 \vspace{1cm}
 \par
-The probability density function p of a normal distribution random variable z in our case is:
+The probability density function $p$ of a normal distribution random variable $z$ in our case is:
 \begin{equation}
 p_{G}(z)={\frac {1}{ {\sqrt {2\pi }}}}e^{-{\frac {z^{2}}{2}}}
 \end{equation}
-where z represents the grey level, $\mu$  the mean value and $\sigma$  the standard deviation
-
+where $z$ represents the grey level, $\mu$  the mean value and $\sigma$  the standard deviation
+\vspace{1cm}
+\par
+The frequency estimation function for MUSIC is:
+\begin{equation}
+\hat P_{MU}(e^{j \omega}) = \frac{1}{\sum_{i=p+1}^{M} |\mathbf{e}^{H} \mathbf{v}_i|^2},
+\end{equation}
+where $\mathbf{v}_i$ are the noise eigenvectors and
+\begin{equation}
+\mathbf{e} = \begin{bmatrix}1 & e^{j \omega} & e^{j 2 \omega} & \cdots & e^{j (M-1) \omega}\end{bmatrix}^T.
+\end{equation}
 %\begin{figure}[h]
 %\centering
 %\includegraphics[width=0.8\linewidth]{img/img1}
