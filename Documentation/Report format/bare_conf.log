@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  16 DEC 2015 22:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  17 DEC 2015 14:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -438,38 +438,40 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ” in font ptmr7t!
-) (./sec2_Overview.tex
+ [1{e:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]) (./sec2_Overview.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
 
-<./graph/noise1.png, id=1, 566.115pt x 505.89pt>
+<./graph/noise1.png, id=16, 566.115pt x 505.89pt>
 File: ./graph/noise1.png Graphic file (type png)
  <use ./graph/noise1.png>
 Package pdftex.def Info: ./graph/noise1.png used on input line 11.
-(pdftex.def)             Requested size: 75.60077pt x 67.55115pt.
+(pdftex.def)             Requested size: 226.79846pt x 202.6689pt.
 
-<./graph/noise2.png, id=3, 563.10374pt x 507.8975pt>
+<./graph/noise2.png, id=18, 563.10374pt x 507.8975pt>
 File: ./graph/noise2.png Graphic file (type png)
  <use ./graph/noise2.png>
 Package pdftex.def Info: ./graph/noise2.png used on input line 17.
-(pdftex.def)             Requested size: 75.60077pt x 68.18346pt.
+(pdftex.def)             Requested size: 226.79846pt x 204.56587pt.
 
-<./graph/noise3.png, id=4, 561.09625pt x 506.89375pt>
+<./graph/noise3.png, id=19, 561.09625pt x 506.89375pt>
 File: ./graph/noise3.png Graphic file (type png)
- <use ./graph/noise3.png>
+
+<use ./graph/noise3.png>
 Package pdftex.def Info: ./graph/noise3.png used on input line 23.
-(pdftex.def)             Requested size: 75.60077pt x 68.2962pt.
-
-Underfull \hbox (badness 3407) in paragraph at lines 24--24
-\OT1/ptm/m/n/8 added with Rayleigh
- []
-
-[1{e:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+(pdftex.def)             Requested size: 226.79846pt x 204.88864pt.
 
 
-])
-(./sec3_Architecture.tex) (./sec4_Evaluation.tex
+LaTeX Warning: Float too large for page by 2.91925pt on input line 27.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) (./sec3_Architecture.tex) (./sec4_Evaluation.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--8
 
  []
@@ -524,34 +526,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[2 <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png>] [3
-
- <./graph/simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> 
-<./graph/simulation4.png> <./graph/simulation5.png>] (./bare_conf.aux) ) 
+[2] [3 <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png> <./graph/
+simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> <./graph/s
+imulation4.png> <./graph/simulation5.png>] (./bare_conf.aux) ) 
 Here is how much of TeX's memory you used:
  5595 strings out of 493054
  78638 string characters out of 6138327
- 176487 words of memory out of 5000000
+ 177487 words of memory out of 5000000
  8987 multiletter control sequences out of 15000+600000
  46781 words of font info for 114 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,15n,35p,1302b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
-{e:/tex
-live/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<e:/texlive/2015/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmbx10.pfb><e:/texlive/2015/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmex10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi5.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
-b><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/texlive/2015/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/texlive/2015/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy10.pfb><e:/texlive/2015/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pf
-b><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/texlive/201
-5/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-dist/fonts
-/type1/urw/times/utmri8a.pfb>
-Output written on bare_conf.pdf (3 pages, 381462 bytes).
+ 41i,15n,35p,1306b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
+{e:/texlive/2015/
+texmf-dist/fonts/enc/dvips/base/8r.enc}<e:/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmbx10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmex10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pf
+b><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/texlive/2015/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/texlive/2015/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmr7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy8.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/texl
+ive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/texlive/2015/texmf-di
+st/fonts/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw
+/times/utmri8a.pfb>
+Output written on bare_conf.pdf (3 pages, 383101 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream
