@@ -1,13 +1,52 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{wiki:CCD}
+\bibitem{wiki:MUSIC}
 Wikipedia.
-\newblock Charge-coupled device --- wikipedia{,} the free encyclopedia, 2015.
-\newblock [Online; accessed 11-December-2015].
+\newblock Multiple signal classification --- wikipedia{,} the free
+  encyclopedia, 2015.
+\newblock [Online; accessed 17-December-2015].
 
-\bibitem{tempsensor}
-sensorwiki.
-\newblock Temperature sensors, 2011/04/14.
-\newblock [Online; accessed 11-December-2015].
+\bibitem{music}
+Channel parameter estimation for scatter cluster model using modified music
+  algorithm : Figure 1.
+
+\bibitem{elsayed}
+Magy Elsayed.
+\newblock Wireless communications.
+
+\bibitem{wiki:Pathloss}
+Wikipedia.
+\newblock Path loss --- wikipedia{,} the free encyclopedia, 2015.
+\newblock [Online; accessed 17-December-2015].
+
+\bibitem{wiki:Rayleighfading}
+Wikipedia.
+\newblock Rayleigh fading --- wikipedia{,} the free encyclopedia, 2015.
+\newblock [Online; accessed 17-December-2015].
+
+\bibitem{wiki:Normaldistribution}
+Wikipedia.
+\newblock Normal distribution --- wikipedia{,} the free encyclopedia, 2015.
+\newblock [Online; accessed 17-December-2015].
+
+\bibitem{faria2005modeling}
+Daniel~B Faria et~al.
+\newblock Modeling signal attenuation in ieee 802.11 wireless lans-vol. 1.
+\newblock {\em Computer Science Department, Stanford University}, 1, 2005.
+
+\bibitem{wiki:SLAM}
+Wikipedia.
+\newblock Simultaneous localization and mapping --- wikipedia{,} the free
+  encyclopedia, 2015.
+\newblock [Online; accessed 17-December-2015].
+
+\bibitem{88147}
+J.J. Leonard and H.F. Durrant-Whyte.
+\newblock Mobile robot localization by tracking geometric beacons.
+\newblock {\em Robotics and Automation, IEEE Transactions on}, 7(3):376--382,
+  Jun 1991.
+
+\bibitem{speedguide}
+How does rssi (dbm) relate to signal quality (percent) ?
 
 \end{thebibliography}

@@ -2,24 +2,25 @@
 \subsection{Simulation Procedure}
 We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we use. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian distribution and Rayleigh distribution are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DoA.
 
-\begin{figure}[h]
-	\begin{minipage}[t]{0.3\linewidth}
+
+\begin{figure}[ht]
 	\centering
-	\includegraphics[width=\textwidth]{procedure}
+	\includegraphics[width=0.4\textwidth]{procedure}
 	\caption{Simulation Procedure}
-	\end{minipage}
-\end{figure}
+	%\label{fig1}
+	\end{figure}
 	
 In the simulation is designed to see locations of robots and estimated distance by signal strength measured by robot's receivers. The location of the robots and some ranges from the robot are marked. The simulation assumes that field is a 2-D space that ranges 1000 meters by 1000 meters. The robots consist of a transmitter and four receivers with a interval of 0.6 meters. The marked range from robots are 200 meters and 100 meters and 20 meters representing the sensory range and the communication range, the rejection range respectively.
 
-\begin{figure}[h]
-	\begin{minipage}[t]{0.3\linewidth}
-	\centering
-	\includegraphics[width=\textwidth]{classDiagram}
-	\caption{Class Diagram of the simulation}
-	\end{minipage}
-\end{figure}
 
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{classDiagram}
+	\caption{Class Diagram of the simulation}
+	%\label{fig1}
+	\end{figure}
+	
 
 The simulation is written in MATLAB. The simulation consists of five files: 
 \begin{itemize}

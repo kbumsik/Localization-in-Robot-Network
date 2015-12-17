@@ -1,46 +1,46 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/W32TeX)
+This is BibTeX, Version 0.99d (TeX Live 2015/W32TeX)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: bare_conf.aux
 The style file: unsrt.bst
-Database file #1: bare_conf.bib
-You've used 2 entries,
+Database file #1: bare_conf.bib.bib
+You've used 10 entries,
             1791 wiz_defined-function locations,
-            454 strings with 3689 characters,
-and the built_in function-call counts, 274 in all, are:
-= -- 20
-> -- 8
+            485 strings with 4600 characters,
+and the built_in function-call counts, 1331 in all, are:
+= -- 101
+> -- 42
 < -- 0
-+ -- 4
-- -- 2
-* -- 4
-:= -- 47
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 2
++ -- 20
+- -- 10
+* -- 32
+:= -- 198
+add.period$ -- 25
+call.type$ -- 10
+change.case$ -- 10
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 10
-empty$ -- 37
-format.name$ -- 2
-if$ -- 61
+cite$ -- 10
+duplicate$ -- 57
+empty$ -- 183
+format.name$ -- 10
+if$ -- 311
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 0
-newline$ -- 13
-num.names$ -- 2
-pop$ -- 14
+int.to.str$ -- 10
+missing$ -- 2
+newline$ -- 48
+num.names$ -- 8
+pop$ -- 54
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 6
+skip$ -- 46
 stack$ -- 0
-substring$ -- 0
-swap$ -- 2
+substring$ -- 21
+swap$ -- 10
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 2
-width$ -- 3
-write$ -- 22
+while$ -- 9
+width$ -- 12
+write$ -- 91
