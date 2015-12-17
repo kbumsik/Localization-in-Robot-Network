@@ -60,7 +60,7 @@ for i = 1: numOfObjects;
     drawAll(robot(i));
     % Add description
     str = ['Robot ',num2str(i)];
-    text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left');
+    text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left','FontSize', 20);
 end
 
 % draw lines
