@@ -1,4 +1,44 @@
-\section{Architecture}
+\section{Methodology}
+\subsection{Simulation Procedure}
+We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we use. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian distribution and Rayleigh distribution are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DoA.
+
+\begin{figure}[h]
+	\begin{minipage}[t]{0.3\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{procedure}
+	\caption{Simulation Procedure}
+	\end{minipage}
+\end{figure}
+	
+In the simulation is designed to see locations of robots and estimated distance by signal strength measured by robot's receivers. The location of the robots and some ranges from the robot are marked. The simulation assumes that field is a 2-D space that ranges 1000 meters by 1000 meters. The robots consist of a transmitter and four receivers with a interval of 0.6 meters. The marked range from robots are 200 meters and 100 meters and 20 meters representing the sensory range and the communication range, the rejection range respectively.
+
+\begin{figure}[h]
+	\begin{minipage}[t]{0.3\linewidth}
+	\centering
+	\includegraphics[width=\textwidth]{classDiagram}
+	\caption{Class Diagram of the simulation}
+	\end{minipage}
+\end{figure}
+
+
+The simulation is written in MATLAB. The simulation consists of five files: 
+\begin{itemize}
+	\item simulation.m
+	\item Robot.m
+	\item Tranceiver.m
+	\item simulation.m
+	\item getSignalStrength.m
+	\item drawCircle.m.
+\end{itemize}
+
+The drawCircle.m is used to draw circles on the simulation field to visualize the ranges of robots.
+
+The getSignalStrength.m defines our signal model and accepts a distance value as an argument then returns a value of signal Strength. The model of signal will be discussed later.
+
+Tranceiver.m defines the model of the signal transmitter and receiver using class. This class has four kinds of class member: sensory, communication, reject, and position. The class member sensory, communication, and reject are floating points in meters, representing those name of range. The class member position represents four 
+
+Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four is for receiver. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
+
 \subsection{Formula}
 \begin{itemize}
 \item To simplify our simulation, we decide to use a simple version of path loss, which is:
