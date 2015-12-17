@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  17 DEC 2015 14:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/W32TeX) (preloaded format=pdflatex 2015.11.8)  17 DEC 2015 14:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,13 +435,17 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 391.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 (./sec1_Introduction.tex
+
+LaTeX Warning: Citation `wiki:MUSIC' on page 1 undefined on input line 6.
+
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no ” in font ptmr7t!
- [1{e:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+[1{e:/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]) (./sec2_Overview.tex
+])
+(./sec2_Overview.tex
 Underfull \hbox (badness 10000) in paragraph at lines 4--5
 
  []
@@ -528,31 +532,34 @@ Before submitting the final camera ready copy, remember to:
 
 [2] [3 <./graph/noise1.png> <./graph/noise2.png> <./graph/noise3.png> <./graph/
 simulation1.png> <./graph/simulation2.png> <./graph/simulation3.png> <./graph/s
-imulation4.png> <./graph/simulation5.png>] (./bare_conf.aux) ) 
+imulation4.png> <./graph/simulation5.png>] (./bare_conf.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 5595 strings out of 493054
- 78638 string characters out of 6138327
+ 5597 strings out of 493054
+ 78656 string characters out of 6138327
  177487 words of memory out of 5000000
- 8987 multiletter control sequences out of 15000+600000
- 46781 words of font info for 114 fonts, out of 8000000 for 9000
+ 8988 multiletter control sequences out of 15000+600000
+ 47888 words of font info for 115 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 41i,15n,35p,1306b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
-{e:/texlive/2015/
-texmf-dist/fonts/enc/dvips/base/8r.enc}<e:/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmex10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pf
-b><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><e:/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><e:/texlive/2015/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/texlive/2015/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsy8.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb><e:/texl
-ive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/texlive/2015/texmf-di
-st/fonts/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on bare_conf.pdf (3 pages, 383101 bytes).
+ 41i,15n,35p,1450b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
+{e:/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}<e:/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><e:/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb><e:/texlive/2015/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmmi10.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi5.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmmi7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+><e:/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><e:/texliv
+e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><e:/texlive/2015/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><e:/texlive/2015/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy7.pfb><e:/texlive/2015/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy8.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/
+utmb8a.pfb><e:/texlive/2015/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><e:/te
+xlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb><e:/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on bare_conf.pdf (3 pages, 383090 bytes).
 PDF statistics:
  92 PDF objects out of 1000 (max. 8388607)
  55 compressed objects within 1 object stream
