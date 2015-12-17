@@ -1,14 +1,24 @@
 \section{Architecture}
-\label{sec:architecture}
-	During our modelling stage, we separate it into three parts: path loss, fading and noise. \par
-	The first step is to randomly generate a location for each robot. Each robot should have three ranges, sensory range, communication range and reject range. Sensory range is the largest range that allows each of robots to sense each other within that area. Communication range is the smaller range that allows robots to communicate with each other. Reject range is the smallest range in the case when two robots are too close, they can't sense each other, which is what we want to avoid during the simulation. In order to do this, we create three files, described as following:
-
-\begin{itemize}
-\item "drawCircle.m": A simple function to draw circle with parameters x,y and r which stands for the locations and radius. \item "Robot.m": A class that has properties called "sensory", "communication" and "reject" which hold values for the radius of each range. Properties "x" and "y" stands for the location of robots in graph to be drawn. This class has four methods of drawing circles, "drawSensory(obj)", "drawCommunication(obj)", "drawReject(obj)" and "drawAll(obj)" which can draw three types of circle range individually and in one time. 
-\item "simulation.m": The driver file that creates 8 robot object in random location in the graph. In order to avoid robots correlated with each other within the reject range, the algorithm is to keep looking for the position of a new robot until the condition satisfied and then create robot according to that position. 
-\end{itemize}
-
-
+\subsection{Formula}
+To simplify our simulation, we decide to use a simple version of path loss, which is:
+\begin{equation}
+L(d)=10*n*log_{10}d + C
+\end{equation}
+where L is the path loss in decibels, n is the path loss exponent, d is the distance between the transmitter and the receiver, usually measured in meters, and C is a constant which accounts for system losses.
+\vspace{1cm}
+\par
+Rayleigh distributed probability density function is:
+\begin{equation}
+p_{R}(r)={\frac {2r}{\Omega }}e^{-r^{2}/\Omega },\ r\geq {}0
+\end{equation}
+where R is random variable, $\Omega$ = E($R^{2}$).
+\vspace{1cm}
+\par
+The probability density function p of a normal distribution random variable z in our case is:
+\begin{equation}
+p_{G}(z)={\frac {1}{ {\sqrt {2\pi }}}}e^{-{\frac {z^{2}}{2}}}
+\end{equation}
+where z represents the grey level, $\mu$  the mean value and $\sigma$  the standard deviation
 
 %\begin{figure}[h]
 %\centering
