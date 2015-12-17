@@ -70,5 +70,13 @@ classdef Robot
           rStrength(4) = getSignalStrength(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
       end
       
+      % Draw line between two robot
+      function drawLine(obj, targetRobot)
+          plot([obj.getX(), targetRobot.getX()],[obj.getY(), targetRobot.getY()]);
+          % Add description
+          str = ['Avg. Str.', num2str(mean(getStrength(obj, targetRobot))), 'db'];
+          text(mean([obj.getX(), targetRobot.getX()]),mean([obj.getY(), targetRobot.getY()]),str,'HorizontalAlignment','left');
+      end
+      
    end
 end
