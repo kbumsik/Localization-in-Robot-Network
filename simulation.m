@@ -18,6 +18,9 @@ freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
 sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 
+% constants for drawing
+pointOffset = 5;
+
 %===================================
 
 %% Create objects
@@ -55,8 +58,21 @@ plot(0)
 hold on;
 for i = 1: numOfObjects;
     drawAll(robot(i));
-    
+    % Add description
+    str = ['Robot ',num2str(i)];
+    text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left');
 end
+
+% draw lines
+for i = 1:numOfObjects
+    for j = i:numOfObjects
+        if (i ==j)
+            continue
+        end
+        drawLine(robot(i),robot(j));
+    end
+end
+
 hold off;
 
 set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
