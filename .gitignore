@@ -1,7 +1,7 @@
 Documentation/Report format/Abstract.aux
 *.m~
-*.log
-*.aux
-*.blg
-*.gz
+Documentation/Report format/*.log
+Documentation/Report format/*.aux
+Documentation/Report format/*.blg
+Documentation/Report format/*.gz
 Documentation/Report format/*.pdf

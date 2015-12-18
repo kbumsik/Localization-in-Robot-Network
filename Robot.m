@@ -72,10 +72,12 @@ classdef Robot
       
       % Draw line between two robot
       function drawLine(obj, targetRobot)
-          plot([obj.getX(), targetRobot.getX()],[obj.getY(), targetRobot.getY()]);
+          x = [obj.getX(), targetRobot.getX()];
+          y = [obj.getY(), targetRobot.getY()];
+          plot(x,y);
           % Add description
           str = ['Avg. Str.', num2str(mean(getStrength(obj, targetRobot))), 'db'];
-          text(mean([obj.getX(), targetRobot.getX()]),mean([obj.getY(), targetRobot.getY()]),str,'HorizontalAlignment','left');
+          text(mean(x),mean(y),str,'HorizontalAlignment','left','fontsize',18);
       end
       
    end
