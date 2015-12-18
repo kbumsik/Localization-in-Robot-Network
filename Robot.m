@@ -75,7 +75,7 @@ classdef Robot
           plot([obj.getX(), targetRobot.getX()],[obj.getY(), targetRobot.getY()]);
           % Add description
           str = ['Avg. Str.', num2str(mean(getStrength(obj, targetRobot))), 'db'];
-          annotation('textarrow',mean([obj.getX(), targetRobot.getX()]),mean([obj.getY(), targetRobot.getY()]),'String',str,'FontSize', 18);
+          text(mean([obj.getX(), targetRobot.getX()]),mean([obj.getY(), targetRobot.getY()]),str,'HorizontalAlignment','left');
       end
       
    end
