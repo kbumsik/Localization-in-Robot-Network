@@ -1,6 +1,6 @@
 \section{Methodology}
 \subsection{Simulation Procedure}
-We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we use. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian distribution and Rayleigh distribution are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DoA.
+We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we use. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian white noise and Rayleigh fading are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DoA.
 
 
 \begin{figure}[ht]
@@ -41,29 +41,43 @@ Tranceiver.m defines the model of the signal transmitter and receiver using clas
 Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four is for receiver. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
 
 \subsection{Formula}
-\begin{itemize}
-\item To simplify our simulation, we decide to use a simple version of path loss, which is:
+The equation of path loss is:
 \begin{equation}
 L(d)=10*n*log_{10}d + C
 \end{equation}
 where $L$ is the path loss in decibels, $n$ is the path loss exponent, $d$ is the distance between the transmitter and the receiver, usually measured in meters, and $C$ is a constant which accounts for system losses.
+\par
+In our model, we use a reference distance and signal strength to get the signal strength:
+\begin{equation}
+p_{L}(d)=L(d_{0})-20log_{10}(d/d_{0})
+\end{equation}
+where $d_{0}$ is the reference distance of an antenna, $L(d_{0})$ is the signal strength at $d_{0}$. The value of $d_{0}$ and $L(d_{0})$ depends on characteristic of an antenna.
+\\
 \vspace{1cm}
 
-\item Rayleigh distributed probability density function is:
+The Gaussian White Noise has the probability density function $p_{G}$ of a normal distribution with random variable $x$ in our case is:
+\begin{equation}
+p_{G}(x)={\frac {1}{ {\sigma\sqrt {2\pi }}}}e^{-{\frac {x^{2}}{2\sigma}}}
+\end{equation}
+where $\sigma$  the standard deviation. The standard deviation in our model depends on performance of antenna, which can be represented as Signal-to-Noise Ratio (SNR).
+\vspace{1cm}
+
+The Rayleigh fading is the effect when there are objects like wall in the field that scatter the radio signal. The Rayleigh fading has a model with Rayleigh distributed probability density function, that is:
 \begin{equation}
 p_{R}(r)={\frac {2r}{\Omega }}e^{-r^{2}/\Omega },\ r\geq {}0
 \end{equation}
-where $R$ is random variable, $\Omega = E(R^{2})$.
+where $R$ is random variable, and $\Omega$ is the mean value of square of $r$: $\Omega = E(R^{2})$.
 \vspace{1cm}
 
-\item The probability density function $p$ of a normal distribution random variable $z$ in our case is:
+To sum up, the received signal strength of the receiver antenna is:
 \begin{equation}
-p_{G}(z)={\frac {1}{ {\sqrt {2\pi }}}}e^{-{\frac {z^{2}}{2}}}
+p(d)=p_{L}(d)+p_{G}(x)+p_{R}(r)
 \end{equation}
-where $z$ represents the grey level, $\mu$  the mean value and $\sigma$  the standard deviation
+where $L(d)$ is the path loss, $p_{G}(x)$ is the Gaussian White Noise, and $p_{R}(r)$ is the Rayleigh fading.
 \vspace{1cm}
-\par
-\item The frequency estimation function for MUSIC is:
+
+
+The frequency estimation function for MUSIC is:
 \begin{equation}
 \hat P_{MU}(e^{j \omega}) = \frac{1}{\sum_{i=p+1}^{M} |\mathbf{e}^{H} \mathbf{v}_i|^2},
 \end{equation}
@@ -71,7 +85,6 @@ where $\mathbf{v}_i$ are the noise eigenvectors and
 \begin{equation}
 \mathbf{e} = \begin{bmatrix}1 & e^{j \omega} & e^{j 2 \omega} & \cdots & e^{j (M-1) \omega}\end{bmatrix}^T.
 \end{equation}
-\end{itemize}
 %\begin{figure}[h]
 %\centering
 %\includegraphics[width=0.8\linewidth]{img/img1}
