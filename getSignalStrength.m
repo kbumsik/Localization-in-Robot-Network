@@ -12,6 +12,14 @@ function power = getSignalStrength( distance )
     P= -27.25-20*log10(d/d0) + 0.05*1;
 
     %% get power
+    
+    % power from the path loss
+    pl = -27.25-20*log10(distance/d0);
+    % Gaussian White Noise
+    pg = 1*randn(size(distance));
+    % Rayleigh Fading Effect
+    pd=makedist('Rayleigh');
+    pr=random(pd);
 
-    power= -27.25-20*log10(distance/d0) + 1*randn(size(distance));
+    power= pl+pg+pr;
 end

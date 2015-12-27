@@ -10,11 +10,12 @@ x = [0:0.01:10];
 pd=makedist('Rayleigh');
 
 hold on;
- for x1 = 1: 1001;
-    y(x1)=random(pd); 
+x1 = 1:100;
+ for i = x1;
+    y(i)=random(pd); 
  end
 
 % plot(x, sin(x));
 % plot(x,y);
- plot(x,y+sin(x));
+ plot(x1,y);
 hold off;
