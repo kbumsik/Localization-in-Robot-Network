@@ -105,8 +105,8 @@ plot(w21,s21);
 [temp, iMax12] = max(s12);
 [temp, iMax21] = max(s21);
 % get the angle of the maximum power
-DoA12 = radtodeg(w12(iMax12)),
-DoA21 = radtodeg(w21(iMax21)),
+DoA12 = mod(w12(iMax12)+(7*pi)/4, 2*pi) *180/pi,
+DoA21 = mod(w21(iMax21)+(7*pi)/4, 2*pi) *180/pi,
 
 %% plot distance vs power plot
 figure(4);
