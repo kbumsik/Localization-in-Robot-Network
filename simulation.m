@@ -90,8 +90,26 @@ for i = 1:numOfObjects
     end
 end
 
-%% plot distance vs power plot
+%% Applying pmusic function
 figure(2);
+y1 = fft(signalStrength(1,2,:));
+[s12,w12]=pmusic(y1,1);
+plot(w12,s12);
+
+figure(3);
+y2 = fft(signalStrength(2,1,:));
+[s21,w21]=pmusic(y2,1);
+plot(w21,s21);
+
+% get the index of maximum power
+[temp, iMax12] = max(s12);
+[temp, iMax21] = max(s21);
+% get the angle of the maximum power
+DoA12 = radtodeg(w12(iMax12)),
+DoA21 = radtodeg(w21(iMax21)),
+
+%% plot distance vs power plot
+figure(4);
 t = [0:0.1:600];
 y= getSignalStrength(t);
 plot(t,y);
