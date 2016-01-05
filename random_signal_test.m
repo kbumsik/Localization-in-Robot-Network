@@ -19,9 +19,4 @@ hold on;
  plot(x,y+sin(x));
 hold off;
 
-%%
-x=[1 1 1 0];
-y=fft(x);
-[p,w]= pmusic(y,1);
-[temp,iMax]=max(p);
-doa=radtodeg(w(iMax))
+
