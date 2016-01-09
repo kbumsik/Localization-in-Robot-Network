@@ -12,7 +12,7 @@ yField = 1000;       % in meters
 sens = 200;          % in meters
 comm = 100;          % in meters
 reject = 20;        % in meters
-numOfObjects = 2;   % number of robots
+numOfObjects = 8;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
@@ -91,25 +91,28 @@ for i = 1:numOfObjects
 end
 
 %% Applying pmusic function
-figure(2);
-y1 = fft(signalStrength(1,2,:));
-[s12,w12]=pmusic(y1,1);
-plot(w12,s12);
 
-figure(3);
-y2 = fft(signalStrength(2,1,:));
-[s21,w21]=pmusic(y2,1);
-plot(w21,s21);
+DoA = zeros(numOfObjects,numOfObjects);
+for i = 1:numOfObjects  %i is index of transmiter
+    for j = 1:numOfObjects  %j is index of receiver
+        if i==j
+            continue;
+        end
+      y = fft(signalStrength(j,i,:));
+      [s,w]=pmusic(y,1); 
+      [temp, iMax] = max(s);
+      DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
+    end
+end
 
-% get the index of maximum power
-[temp, iMax12] = max(s12);
-[temp, iMax21] = max(s21);
-% get the angle of the maximum power
-DoA12 = mod(w12(iMax12)+(7*pi)/4, 2*pi) *180/pi,
-DoA21 = mod(w21(iMax21)+(7*pi)/4, 2*pi) *180/pi,
+DoA(:,:)    
+
 
 %% plot distance vs power plot
 figure(4);
-t = [0:0.1:600];
-y= getSignalStrength(t);
+t = [1:0.1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = getSignalStrength(t(i));
+end
 plot(t,y);
