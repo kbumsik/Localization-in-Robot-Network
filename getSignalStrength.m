@@ -21,19 +21,26 @@ function result = getSignalStrength( distance )
     SNR=10; % in dB
     %noise_sigma = 1;
     %}
-    % SNRdb = 10*log10(SNR) = 10*log10(Strength/sigma)
-    %       = Strengthdb - sigmadb, therefore,
-    % sigmadb = Strengthdb - SNRdb
+    % SNR = (Power of signal)/(standard deviation of the noise)
+    % SNR_db = 10*log10(SNR) = 10*log10(P_linear/sigma)
+    %       = P_db - sigma_db, therefore,
+    % sigma_db = P_db - SNRdb
     sigma_db = Pl - SNR;
+    % sigma_linear = 10^( sigma_db/10)
     sigma = power(10, sigma_db/10);
+    % normal distribution with 0 mean and sigma_linear standard deviation
     Pg = normrnd(0, sigma);
+    % Because output is in db, we should add P_inear with Pg
     Pg = Pg+ power(10, Pl/10);
+    % Then convert to db again
     Pg = 10*log10(Pg);
+    % Lastly, subtract P_db
     Pg = Pl-Pg;
     
     %% Rayleigh Fading Effect
     pd=makedist('Rayleigh');
     Pr=0.4*random(pd);
-
-    result = Pl+Pg + Pr;
+    
+    %% Get the result
+    result = Pl +Pg + Pr;
 end
