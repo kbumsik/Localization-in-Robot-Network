@@ -114,7 +114,7 @@ end
 
 DoA(:,:)    
 
-%{
+
 %% plot distance vs power plot
 figure(4);
 t = [1:0.1:600];
@@ -132,4 +132,3 @@ for i = 1: length(t)
     y(i) = signal.getTrue(t(i));
 end
 plot(t,y);
-%}
