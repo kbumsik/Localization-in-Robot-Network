@@ -63,20 +63,28 @@ classdef Robot
       end
       
       % Return signal strength of each receivers
-      function rStrength = getStrength(obj, targetRobot)
-          rStrength = getSignalStrength(pdist2(obj.receiver(1).position,targetRobot.position,'euclidean'));
-          rStrength(2) = getSignalStrength(pdist2(obj.receiver(2).position,targetRobot.position,'euclidean'));
-          rStrength(3) = getSignalStrength(pdist2(obj.receiver(3).position,targetRobot.position,'euclidean'));
-          rStrength(4) = getSignalStrength(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
+      function rStrength = getNoisedStrength(obj, targetRobot, signal)
+          rStrength =    signal.getNoised(pdist2(obj.receiver(1).position,targetRobot.position,'euclidean'));
+          rStrength(2) = signal.getNoised(pdist2(obj.receiver(2).position,targetRobot.position,'euclidean'));
+          rStrength(3) = signal.getNoised(pdist2(obj.receiver(3).position,targetRobot.position,'euclidean'));
+          rStrength(4) = signal.getNoised(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
+      end
+
+      % Return signal strength of each receivers
+      function rStrength = getTureStrength(obj, targetRobot, signal)
+          rStrength =    signal.getTrue(pdist2(obj.receiver(1).position,targetRobot.position,'euclidean'));
+          rStrength(2) = signal.getTrue(pdist2(obj.receiver(2).position,targetRobot.position,'euclidean'));
+          rStrength(3) = signal.getTrue(pdist2(obj.receiver(3).position,targetRobot.position,'euclidean'));
+          rStrength(4) = signal.getTrue(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
       end
       
       % Draw line between two robot
-      function drawLine(obj, targetRobot)
+      function drawLine(obj, targetRobot, signal)
           x = [obj.getX(), targetRobot.getX()];
           y = [obj.getY(), targetRobot.getY()];
           plot(x,y);
           % Add description
-          str = ['Avg. Str.', num2str(mean(getStrength(obj, targetRobot))), 'db'];
+          str = ['Avg. Str.', num2str(mean(getNoisedStrength(obj, targetRobot, signal))), 'db'];
           text(mean(x),mean(y),str,'HorizontalAlignment','left','fontsize',18);
       end
       

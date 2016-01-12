@@ -21,6 +21,10 @@ sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 % constants for drawing
 pointOffset = 5;
 
+% constants for signal
+SNR = 10;
+factor_rayleigh = 0.4;
+
 %===================================
 
 %% Create objects
@@ -47,6 +51,9 @@ for i = 1: numOfObjects;
     
 end
 
+%% Signal Object
+signal = Signal(SNR, factor_rayleigh);
+
 %==========================================================================
 
 %% Display
@@ -69,7 +76,7 @@ for i = 1:numOfObjects
         if (i ==j)
             continue
         end
-        drawLine(robot(i),robot(j));
+        drawLine(robot(i),robot(j),signal);
     end
 end
 
@@ -86,7 +93,7 @@ for i = 1:numOfObjects
         if (i ==j)
             continue
         end
-        signalStrength(i,j,:) = getStrength(robot(i),robot(j));
+        signalStrength(i,j,:) = getNoisedStrength(robot(i),robot(j), signal);
     end
 end
 
@@ -113,6 +120,15 @@ figure(4);
 t = [1:0.1:600];
 y = zeros(size(t));
 for i = 1: length(t)
-    y(i) = getSignalStrength(t(i));
+    y(i) = signal.getNoised(t(i));
+end
+plot(t,y);
+
+%% plot the True distance vs power plot
+figure(5);
+t = [1:0.1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = signal.getTrue(t(i));
 end
 plot(t,y);
