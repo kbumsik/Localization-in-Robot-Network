@@ -30,6 +30,11 @@ function result = getSignalStrength( distance )
     sigma = power(10, sigma_db/10);
     % normal distribution with 0 mean and sigma_linear standard deviation
     Pg = normrnd(0, sigma);
+        %take 100 samples average as final Pg
+        for i = 1: 99
+            Pg = Pg + normrnd(0, sigma);
+        end
+        Pg = Pg/100;
     % Because output is in db, we should add P_inear with Pg
     Pg = Pg+ power(10, Pl/10);
     % Then convert to db again
@@ -40,7 +45,11 @@ function result = getSignalStrength( distance )
     %% Rayleigh Fading Effect
     pd=makedist('Rayleigh');
     Pr=0.4*random(pd);
-    
+    %take 100 samples average as final Pr
+        for i = 1: 99
+            Pr = Pr + 0.4*random(pd);
+        end
+        Pr = Pr/100;
     %% Get the result
-    result = Pl +Pg + Pr;
+    result = Pl + Pg + Pr;
 end
