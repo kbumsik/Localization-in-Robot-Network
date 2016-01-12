@@ -70,5 +70,15 @@ classdef Signal
       Pr = getRayleigh(obj);
       result = Pl + Pg + obj.factor_rayleigh*Pr;
     end
+    
+    function result = getFilteredSignalStrength(obj,distance)
+        numOfSample = 20;
+        sample = zeros(1,20);
+            for i = 1: numOfSample
+              sample(i) = getNoised(obj,distance);
+            end
+        result = mean(sample);
+    end
+    
   end
 end
