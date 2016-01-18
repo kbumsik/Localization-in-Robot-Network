@@ -72,12 +72,24 @@ classdef Signal
     end
     
     function result = getFilteredSignalStrength(obj,distance)
-        numOfSample = 20;
-        sample = zeros(1,20);
-            for i = 1: numOfSample
-              sample(i) = getNoised(obj,distance);
-            end
-        result = mean(sample);
+      numOfSample = 100;
+      sample = zeros(1,numOfSample);
+      for i = 1: numOfSample
+        sample(i) = getNoised(obj,distance);
+      end
+      
+      % Applying low pass filter
+      Y = fft(sample);
+      r = 10; % range of frequencies we want to preserve
+      
+      rectangle = zeros(size(sample));
+      rectangle(1:r+1) = 1;               % preserve low +ve frequencies
+      rectangle(end-r+1:end) = 1;         % preserve low -ve frequencies
+      y_rect = ifft(Y.*rectangle);   % full low-pass filtered signal
+
+      % return result
+      
+      result = y_rect(numOfSample/2);
     end
     
   end

@@ -23,7 +23,8 @@ pointOffset = 5;
 
 % constants for signal
 SNR = 10;
-factor_rayleigh = 0.4;
+factor_rayleigh = 0.4
+;
 
 %===================================
 
@@ -117,18 +118,29 @@ DoA(:,:)
 
 %% plot distance vs power plot
 figure(4);
-t = [1:0.1:600];
+t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
-    y(i) = signal.getNoised(t(i));
+    y(i) = signal.getFilteredSignalStrength(t(i));
 end
 plot(t,y);
 
 %% plot the True distance vs power plot
 figure(5);
-t = [1:0.1:600];
+t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
     y(i) = signal.getTrue(t(i));
 end
+
+plot(t,y);
+
+%% plot the Noised without filtering distance vs power plot
+figure(6);
+t = [1:1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = signal.getNoised(t(i));
+end
+
 plot(t,y);

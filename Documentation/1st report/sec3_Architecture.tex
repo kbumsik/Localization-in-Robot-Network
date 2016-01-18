@@ -1,0 +1,93 @@
+\section{Methodology}
+\subsection{Simulation Procedure}
+We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we use. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian white noise and Rayleigh fading are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DoA.
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{procedure}
+	\caption{Simulation Procedure}
+	%\label{fig1}
+	\end{figure}
+	
+In the simulation is designed to see locations of robots and estimated distance by signal strength measured by robot's receivers. The location of the robots and some ranges from the robot are marked. The simulation assumes that field is a 2-D space that ranges 1000 meters by 1000 meters. The robots consist of a transmitter and four receivers with a interval of 0.6 meters. The marked range from robots are 200 meters and 100 meters and 20 meters representing the sensory range and the communication range, the rejection range respectively.
+
+
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{classDiagram}
+	\caption{Class Diagram of the simulation}
+	%\label{fig1}
+	\end{figure}
+	
+
+The simulation is written in MATLAB. The simulation consists of five files: 
+\begin{itemize}
+	\item simulation.m
+	\item Robot.m
+	\item Tranceiver.m
+	\item simulation.m
+	\item getSignalStrength.m
+	\item drawCircle.m.
+\end{itemize}
+
+The drawCircle.m is used to draw circles on the simulation field to visualize the ranges of robots.
+
+The getSignalStrength.m defines our signal model and accepts a distance value as an argument then returns a value of signal Strength. The model of signal will be discussed later.
+
+Tranceiver.m defines the model of the signal transmitter and receiver using class. This class has four kinds of class member: sensory, communication, reject, and position. The class member sensory, communication, and reject are floating points in meters, representing those name of range. The class member position represents four 
+
+Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four is for receiver. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
+
+\subsection{Formula}
+The equation of path loss is:
+\begin{equation}
+L(d)=10*n*log_{10}d + C
+\end{equation}
+where $L$ is the path loss in decibels, $n$ is the path loss exponent, $d$ is the distance between the transmitter and the receiver, usually measured in meters, and $C$ is a constant which accounts for system losses.
+\par
+In our model, we use a reference distance and signal strength to get the signal strength:
+\begin{equation}
+p_{L}(d)=L(d_{0})-20log_{10}(d/d_{0})
+\end{equation}
+where $d_{0}$ is the reference distance of an antenna, $L(d_{0})$ is the signal strength at $d_{0}$. The value of $d_{0}$ and $L(d_{0})$ depends on characteristic of an antenna.
+\\
+\vspace{1cm}
+
+The Gaussian White Noise has the probability density function $p_{G}$ of a normal distribution with random variable $x$ in our case is:
+\begin{equation}
+p_{G}(x)={\frac {1}{ {\sigma\sqrt {2\pi }}}}e^{-{\frac {x^{2}}{2\sigma}}}
+\end{equation}
+where $\sigma$  the standard deviation. The standard deviation in our model depends on performance of antenna, which can be represented as Signal-to-Noise Ratio (SNR).
+\vspace{1cm}
+
+The Rayleigh fading is the effect when there are objects like wall in the field that scatter the radio signal. The Rayleigh fading has a model with Rayleigh distributed probability density function, that is:
+\begin{equation}
+p_{R}(r)={\frac {2r}{\Omega }}e^{-r^{2}/\Omega },\ r\geq {}0
+\end{equation}
+where $R$ is random variable, and $\Omega$ is the mean value of square of $r$: $\Omega = E(R^{2})$.
+\vspace{1cm}
+
+To sum up, the received signal strength of the receiver antenna is:
+\begin{equation}
+p(d)=p_{L}(d)+p_{G}(x)+p_{R}(r)
+\end{equation}
+where $L(d)$ is the path loss, $p_{G}(x)$ is the Gaussian White Noise, and $p_{R}(r)$ is the Rayleigh fading.
+\vspace{1cm}
+
+
+The frequency estimation function for MUSIC is:
+\begin{equation}
+\hat P_{MU}(e^{j \omega}) = \frac{1}{\sum_{i=p+1}^{M} |\mathbf{e}^{H} \mathbf{v}_i|^2},
+\end{equation}
+where $\mathbf{v}_i$ are the noise eigenvectors and
+\begin{equation}
+\mathbf{e} = \begin{bmatrix}1 & e^{j \omega} & e^{j 2 \omega} & \cdots & e^{j (M-1) \omega}\end{bmatrix}^T.
+\end{equation}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=0.8\linewidth]{img/img1}
+%\caption{3D terrain surface}
+%\label{fig4}
+%\end{figure} 
