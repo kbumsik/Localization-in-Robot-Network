@@ -54,42 +54,65 @@ end
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
 
-%==========================================================================
+%% Display
+field = figure(1);
+set(field,'position',[200,200,xField*1.1,yField*1.1]); % set window size
 
+ 
+plot(0)
+hold on;
+for i = 1: numOfObjects;
+    drawAll(robot(i));
+    % Add description
+    str = ['Robot ',num2str(i)];
+    text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left','fontsize',24);
+end
 
-%% get signal in each robot
-signalStrength = zeros(numOfObjects,numOfObjects,4);
-trueStrength = zeros(numOfObjects,numOfObjects,4);
+% draw lines
 for i = 1:numOfObjects
-    for j = 1:numOfObjects
+    for j = i:numOfObjects
         if (i ==j)
             continue
         end
-        signalStrength(i,j,:) = getNoisedStrength(robot(i),robot(j), signal);
-        trueStrength(i,j,:)= getTureStrength(robot(i),robot(j), signal);
+        drawLine(robot(i),robot(j),signal);
     end
 end
 
-%% Applying pmusic function
+hold off;
 
-DoA = zeros(numOfObjects,numOfObjects);
-DoA_true = zeros(numOfObjects,numOfObjects);
-DoA_difference = zeros(numOfObjects,numOfObjects);
-for i = 1:numOfObjects  %i is index of transmiter
-    for j = 1:numOfObjects  %j is index of receiver
-        if i==j
-            continue;
-        end
-      y = fft(signalStrength(j,i,:));   
-      y2 = fft(trueStrength(j,i,:));  
-      [s,w]=pmusic(y,1); 
-      [s2,w2]=pmusic(y2,1);  
-      [temp, iMax] = max(s);
-      [temp2, iMax2] = max(s2);
-      DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
-      DoA_true(j,i) = mod(w2(iMax2)+(7*pi)/4, 2*pi) *180/pi;
-      DoA_difference(j,i) = DoA(j,i)- DoA_true(j,i);
-    end
+set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
+    'xtick', 0:50:xField, 'ytick', 0:50:yField); % set the limit of the plot
+
+
+%% plot distance vs power plot
+figure(2);
+t = [1:1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = signal.getFilteredSignalStrength(t(i));
 end
+plot(t,y);
+subplot(2,2,1);
 
-DoA_difference(:,:) 
+%% plot the True distance vs power plot
+
+t = [1:1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = signal.getTrue(t(i));
+end
+plot(t,y);
+subplot(2,2,2);
+
+
+%% plot the Noised without filtering distance vs power plot
+
+t = [1:1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = signal.getNoised(t(i));
+end
+plot(t,y);
+subplot(2,2,3);
+
+
