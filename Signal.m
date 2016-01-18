@@ -77,19 +77,11 @@ classdef Signal
       for i = 1: numOfSample
         sample(i) = getNoised(obj,distance);
       end
+      % see tutorial http://www.mathworks.com/help/signal/ref/fir1.html#bulla9m
+      blo = fir1(1,[0.1 0.4]);
+      outlo = filter(blo,1,sample);
       
-      % Applying low pass filter
-      Y = fft(sample);
-      r = 10; % range of frequencies we want to preserve
-      
-      rectangle = zeros(size(sample));
-      rectangle(1:r+1) = 1;               % preserve low +ve frequencies
-      rectangle(end-r+1:end) = 1;         % preserve low -ve frequencies
-      y_rect = ifft(Y.*rectangle);   % full low-pass filtered signal
-
-      % return result
-      
-      result = y_rect(numOfSample/2);
+      result = outlo(numOfSample/2);
     end
     
   end

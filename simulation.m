@@ -22,9 +22,8 @@ sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 pointOffset = 5;
 
 % constants for signal
-SNR = 10;
-factor_rayleigh = 0.4
-;
+SNR = 15;
+factor_rayleigh = 0.1;
 
 %===================================
 
@@ -106,7 +105,7 @@ for i = 1:numOfObjects  %i is index of transmiter
         if i==j
             continue;
         end
-      y = fft(signalStrength(j,i,:));
+      y = fft(signalStrength(j,i,:));      
       [s,w]=pmusic(y,1); 
       [temp, iMax] = max(s);
       DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
@@ -124,6 +123,7 @@ for i = 1: length(t)
     y(i) = signal.getFilteredSignalStrength(t(i));
 end
 plot(t,y);
+
 
 %% plot the True distance vs power plot
 figure(5);
@@ -143,4 +143,3 @@ for i = 1: length(t)
     y(i) = signal.getNoised(t(i));
 end
 
-plot(t,y);
