@@ -22,9 +22,10 @@ sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 pointOffset = 5;
 
 % constants for signal
-SNR = 15;
-factor_rayleigh = 0.1;
-
+SNR = 20;
+factor_rayleigh = 0.002;
+%--- even if 0.00000001, 2 or 3 angles wrong(200 deg diff), so according to
+%result  factor_rayleigh(max)= 0.002
 %===================================
 
 %% Create objects

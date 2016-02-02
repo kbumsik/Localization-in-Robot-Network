@@ -29,6 +29,7 @@ classdef Signal
     end
 
     function Pg = getAGWN(obj, signal)
+       
       %% Gaussian White Noise
       % SNR = (mean of signal)/(standard deviation of the noise)
       % It can be expressed in this way because signal strength is constant
@@ -36,7 +37,7 @@ classdef Signal
       % Parameters{
       obj.SNR; % in dB
       %noise_sigma = 1;
-      %}
+      
       % SNR = (Power of signal)/(standard deviation of the noise)
       % SNR_db = 10*log10(SNR) = 10*log10(P_linear/sigma)
       %       = P_db - sigma_db, therefore,
@@ -45,19 +46,19 @@ classdef Signal
       % sigma_linear = 10^( sigma_db/10)
       sigma = power(10, sigma_db/10);
       % normal distribution with 0 mean and sigma_linear standard deviation
-      Pg = normrnd(0, sigma);
+      Pg = normrnd(signal, sigma);
       % Because output is in db, we should add P_inear with Pg
-      Pg = Pg+ power(10, signal/10);
+     % Pg = Pg+ power(10, signal/10);
       % Then convert to db again
       Pg = 10*log10(Pg);
       % Lastly, subtract P_db
-      Pg = signal-Pg;
-      
+     % Pg = signal-Pg;
+     
     end
 
     function Pr = getRayleigh(obj)
       pd=makedist('Rayleigh');
-      Pr=random(pd);
+      Pr=10*log10(random(pd));
     end
     
     function result = getTrue(obj, distance)
@@ -72,15 +73,14 @@ classdef Signal
     end
     
     function result = getFilteredSignalStrength(obj,distance)
-      numOfSample = 100;
+      numOfSample = 50;
       sample = zeros(1,numOfSample);
       for i = 1: numOfSample
         sample(i) = getNoised(obj,distance);
       end
       % see tutorial http://www.mathworks.com/help/signal/ref/fir1.html#bulla9m
       blo = fir1(1,[0.1 0.4]);
-      outlo = filter(blo,1,sample);
-      
+      outlo = filter(blo,1,sample);    
       result = outlo(numOfSample/2);
     end
     
