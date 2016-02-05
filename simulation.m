@@ -24,8 +24,11 @@ pointOffset = 5;
 % constants for signal
 SNR = 20;
 factor_rayleigh = 0.002;
-%--- even if 0.00000001, 2 or 3 angles wrong(200 deg diff), so according to
-%result  factor_rayleigh(max)= 0.002
+%factor_rayleigh(max)= 0.002(since sometimes there are cases degree larger than 45)
+% when filtered: 0.002:rarely larger than 45(or larger than -315)
+%  not filtered: 0.002:always larger than 45  ==> 
+%                        new factor_rayleigh(max)=0.001(rarely larger than 45)
+
 %===================================
 
 %% Create objects
