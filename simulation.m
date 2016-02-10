@@ -23,9 +23,9 @@ pointOffset = 5;
 
 % constants for signal
 SNR = 20;
-factor_rayleigh = 0.002;
-%factor_rayleigh(max)= 0.002(since sometimes there are cases degree larger than 45)
-% when filtered: 0.002:rarely larger than 45(or larger than -315)
+factor_rayleigh = 0.001;
+%factor_rayleigh(max)= 0.001(90%)
+% when filtered: 0.001: 90%
 %  not filtered: 0.002:always larger than 45  ==> 
 %                        new factor_rayleigh(max)=0.001(rarely larger than 45)
 
@@ -92,7 +92,10 @@ for i = 1:numOfObjects  %i is index of transmiter
       [temp2, iMax2] = max(s2);
       DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
       DoA_true(j,i) = mod(w2(iMax2)+(7*pi)/4, 2*pi) *180/pi;
-      DoA_difference(j,i) = DoA(j,i)- DoA_true(j,i);
+      DoA_difference(j,i) = abs(DoA(j,i)- DoA_true(j,i));
+      if(DoA_difference(j,i)>180) 
+          DoA_difference(j,i)= 360-DoA_difference(j,i);
+      end
     end
 end
 
