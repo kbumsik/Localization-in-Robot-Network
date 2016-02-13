@@ -22,12 +22,25 @@ sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 pointOffset = 5;
 
 % constants for signal
-SNR = 20;
+SNR = 50;
+%when factor_rayleigh=0.001, filtered:
+%SNR=   20 : 90% sucess (18 out of 20)
+%       15 : 90% sucess (18 out of 20)
+%       10 : 90% sucess (18 out of 20)
+%       5  : 95% sucess (19 out of 20)
+%when factor_rayleigh=0.001, not filtered:
+%SNR=   20 : 30% sucess (3 out of 10)
+%       30 : 60% sucess (6 out of 10)
+%       40 : 70% sucess (7 out of 10)
+%       50  : 50% sucess(5 out of 10)
+
+% ==> SNR doesn't effect much?
+
 factor_rayleigh = 0.001;
-%factor_rayleigh(max)= 0.001(90%)
-% when filtered: 0.001: 90%
-%  not filtered: 0.002:always larger than 45  ==> 
-%                        new factor_rayleigh(max)=0.001(rarely larger than 45)
+%factor_rayleigh(max)= 0.001(90%) (18 out of 20)
+% when filtered: 0.001: 90% sucess
+%  not filtered: 0.002  ==> 45% sucess if factor = 0.001
+%                        new factor_rayleigh(max)= 0.0007 :85% sucess (17 out of 20)
 
 %===================================
 
