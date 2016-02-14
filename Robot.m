@@ -1,4 +1,4 @@
-classdef Robot
+classdef Robot < handle
    properties
       sensory
       communication
@@ -11,32 +11,11 @@ classdef Robot
    end
    methods
       function obj = Robot(x_pos, y_pos, sen, com, rej)
-         if isnumeric(sen)
-             obj.sensory = sen;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(com)
-             obj.communication = com;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(rej)
-             obj.reject = rej;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(x_pos)
-             obj.position(1) = x_pos;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(y_pos)
-             obj.position(2) = y_pos;
-         else
-             error('Value must be numeric')
-         end
-         
+         obj.position(1) = x_pos;
+         obj.position(2) = y_pos;
+         obj.sensory = sen;
+         obj.communication = com;
+         obj.reject = rej;
          % Create transmitter
          obj.transmitter = Tranceiver(x_pos, y_pos, sen, com, rej);
          
@@ -111,6 +90,11 @@ classdef Robot
       % move the object for one turn
       function move(obj)
           obj.position = obj.position + obj.velocity;
+          obj.transmitter.setPosition(obj.transmitter.position + obj.velocity);
+          obj.receiver(1).setPosition(obj.receiver(1).position + obj.velocity);
+          obj.receiver(2).setPosition(obj.receiver(2).position + obj.velocity);
+          obj.receiver(3).setPosition(obj.receiver(3).position + obj.velocity);
+          obj.receiver(4).setPosition(obj.receiver(4).position + obj.velocity);
       end
    end
 end

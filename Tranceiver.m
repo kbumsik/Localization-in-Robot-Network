@@ -1,4 +1,4 @@
-classdef Tranceiver
+classdef Tranceiver < handle
    properties
       sensory
       communication
@@ -7,31 +7,11 @@ classdef Tranceiver
    end
    methods
       function obj = Tranceiver(x_pos, y_pos, sen, com, rej)
-         if isnumeric(sen)
-             obj.sensory = sen;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(com)
-             obj.communication = com;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(rej)
-             obj.reject = rej;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(x_pos)
-             obj.position(1) = x_pos;
-         else
-             error('Value must be numeric')
-         end
-         if isnumeric(y_pos)
-             obj.position(2) = y_pos;
-         else
-             error('Value must be numeric')
-         end
+         obj.sensory = sen;
+         obj.communication = com;
+         obj.reject = rej;
+         obj.position(1) = x_pos;
+         obj.position(2) = y_pos;
       end
 
       function drawSensory(obj)
@@ -58,6 +38,10 @@ classdef Tranceiver
       
       function y = getY(obj)
          y = obj.position(2);
+      end
+
+      function setPosition(obj, input)
+        obj.position = input;
       end
    end
 end

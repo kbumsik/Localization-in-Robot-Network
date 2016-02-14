@@ -100,8 +100,11 @@ while (true)
     % move the robots
     distance(1) = robot(1).getDistanceX(robot(2));
     distance(2) = robot(1).getDistanceY(robot(2));
-    robot(1).velocity(1) = distance(1)*0.3;
-    robot(1).velocity(2) = distance(2)*0.3;
+    if (robot(1).getDistance(robot(2)) <= comm)
+        break;
+    end
+    robot(1).velocity(1) = -distance(1)*0.02;
+    robot(1).velocity(2) = -distance(2)*0.02;
     robot(1).move();
     
     clf; % Clear drawing
