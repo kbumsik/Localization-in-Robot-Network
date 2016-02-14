@@ -6,6 +6,8 @@ classdef Robot
       position %contains [x,y]
       transmitter
       receiver
+      velocity %contains [x,y]
+      velPID   %contains [x,y]
    end
    methods
       function obj = Robot(x_pos, y_pos, sen, com, rej)
@@ -43,6 +45,11 @@ classdef Robot
          obj.receiver(2) = Tranceiver(x_pos+0.3, y_pos+0.3, sen, com, rej);
          obj.receiver(3) = Tranceiver(x_pos+0.3, y_pos-0.3, sen, com, rej);
          obj.receiver(4) = Tranceiver(x_pos-0.3, y_pos-0.3, sen, com, rej);
+         
+         % set velocity and PID
+         obj.velocity = zeros(1,2);
+         obj.velPID = PIDcontroller(0.8, 0.2, 0.2); %x
+         obj.velPID(1) = PIDcontroller(0.8, 0.2, 0.2); %y
          
       end %end constructor
 
@@ -88,5 +95,22 @@ classdef Robot
           text(mean(x),mean(y),str,'HorizontalAlignment','left','fontsize',18);
       end
       
+      % get distance between two robots
+      function distance = getDistance(obj, targetRobot)
+          distance = pdist2(obj.position, targetRobot.position,'euclidean');
+      end
+      
+      function distanceX = getDistanceX(obj, targetRobot)
+          distanceX = obj.position(1) - targetRobot.position(1);
+      end
+      
+      function distanceY = getDistanceY(obj, targetRobot)
+          distanceY = obj.position(2) - targetRobot.position(2);
+      end
+      
+      % move the object for one turn
+      function move(obj)
+          obj.position = obj.position + obj.velocity;
+      end
    end
 end
