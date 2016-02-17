@@ -70,7 +70,7 @@ end
 
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
-
+%signal.getBoundingRSSI()
 %==========================================================================
 
 

@@ -84,5 +84,14 @@ classdef Signal
       result = outlo(numOfSample/2);
     end
     
+    function result = getBoundingRSSI(obj)
+        % calculate AWGN when SNR = 30
+        sigma_db = obj.Pld0 - 30;
+        sigma = power(10, sigma_db/10); 
+        Pg = normrnd(obj.Pld0, sigma);
+        Pg = 10*log10(Pg);
+        
+        result = obj.Pld0 + 0.001*getRayleigh(obj) + Pg;
+    end
   end
 end
