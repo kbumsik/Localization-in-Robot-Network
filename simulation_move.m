@@ -96,15 +96,39 @@ set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
                                                  
 %% animation
 distance = zeros(1,2);
+
+
+DoA = zeros(numOfObjects,numOfObjects);
+DoA_true = zeros(numOfObjects,numOfObjects);
+DoA_difference = zeros(numOfObjects,numOfObjects);
+
 while (true)
     % move the robots
     distance(1) = robot(1).getDistanceX(robot(2));
     distance(2) = robot(1).getDistanceY(robot(2));
+    
+    % Calculate DoA
+    for i = 1:numOfObjects  %i is index of transmiter
+        for j = 1:numOfObjects  %j is index of receiver
+            if i==j
+                continue;
+            end
+            y = fft(signalStrength(j,i,:));   
+            y2 = fft(trueStrength(j,i,:));  
+            [s,w]=pmusic(y,1); 
+            [s2,w2]=pmusic(y2,1);  
+            [temp, iMax] = max(s);
+            [temp2, iMax2] = max(s2);
+            DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
+            DoA_true(j,i) = mod(w2(iMax2)+(7*pi)/4, 2*pi) *180/pi;
+        end
+    end
+    DoA_true(:,:)
     if (robot(1).getDistance(robot(2)) <= comm)
         break;
     end
-    robot(1).velocity(1) = -distance(1)*0.02;
-    robot(1).velocity(2) = -distance(2)*0.02;
+    robot(1).velocity(1) = 10*cosd(DoA_true(1,2));
+    robot(1).velocity(2) = 10*sind(DoA_true(1,2));
     robot(1).move();
     
     clf; % Clear drawing
