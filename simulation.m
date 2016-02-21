@@ -70,7 +70,8 @@ end
 
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
-signal.getBoundingRSSI()
+% int 1 is communication range bounding RSSI, otherwise(2) is sensing range bounding RSSI
+signal.getBoundingRSSI(1)
 %==========================================================================
 
 

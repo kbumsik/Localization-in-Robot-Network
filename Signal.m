@@ -83,15 +83,23 @@ classdef Signal
       outlo = filter(blo,1,sample);    
       result = outlo(numOfSample/2);
     end
-    
-    function result = getBoundingRSSI(obj)
+ 
+ % mode 1 returns communication range bounding RSSI, mode 2 (otherwise) returns sensing
+ % bounding RSSI
+    function result = getBoundingRSSI(obj,mode)
+        if mode==1 
+            distance = 100;
+        else
+            distance = 200;
+        end
         % calculate AWGN when SNR = 30
-        sigma_db = obj.Pld0 - 30;
+        pl = obj.getPathLoss(distance);
+        sigma_db = pl - 30;
         sigma = power(10, sigma_db/10); 
-        Pg = normrnd(obj.Pld0, sigma);
+        Pg = normrnd(pl, sigma);
         Pg = 10*log10(Pg);
         
-        result = obj.Pld0 + 0.001*getRayleigh(obj) + Pg;
+        result = pl + 0.001*getRayleigh(obj) + Pg;
     end
   end
 end
