@@ -46,13 +46,13 @@ classdef Signal
       % sigma_linear = 10^( sigma_db/10)
       sigma = power(10, sigma_db/10);
       % normal distribution with 0 mean and sigma_linear standard deviation
-      Pg = normrnd(signal, sigma);
+      Pg = normrnd(0, sigma);
       % Because output is in db, we should add P_inear with Pg
-     % Pg = Pg+ power(10, signal/10);
+      Pg = Pg+ power(10, signal/10);
       % Then convert to db again
       Pg = 10*log10(Pg);
       % Lastly, subtract P_db
-     % Pg = signal-Pg;
+      Pg = signal-Pg;
      
     end
 
