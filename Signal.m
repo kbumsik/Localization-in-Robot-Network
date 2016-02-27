@@ -80,7 +80,7 @@ classdef Signal
       end
       % see tutorial http://www.mathworks.com/help/signal/ref/fir1.html#bulla9m
       blo = fir1(1,[0.1 0.4]);
-      outlo = filter(blo,1,sample);    
+      outlo = filter(blo,1,sample);
       result = outlo(numOfSample/2);
     end
  

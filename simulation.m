@@ -89,19 +89,20 @@ for i = 1:numOfObjects
 end
 
 %% Applying pmusic function
-
+%{
 DoA = zeros(numOfObjects,numOfObjects);
 DoA_true = zeros(numOfObjects,numOfObjects);
 DoA_difference = zeros(numOfObjects,numOfObjects);
+
 for i = 1:numOfObjects  %i is index of transmiter
     for j = 1:numOfObjects  %j is index of receiver
         if i==j
             continue;
         end
-      y = fft(signalStrength(j,i,:));   
-      y2 = fft(trueStrength(j,i,:));  
-      [s,w]=pmusic(y,1); 
-      [s2,w2]=pmusic(y2,1);  
+      y = fft(signalStrength(j,i,:));
+      y2 = fft(trueStrength(j,i,:));
+      [s,w]=pmusic(y,1);
+      [s2,w2]=pmusic(y2,1); 
       [temp, iMax] = max(s);
       [temp2, iMax2] = max(s2);
       DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
@@ -114,3 +115,52 @@ for i = 1:numOfObjects  %i is index of transmiter
 end
 
 DoA_difference(:,:) 
+%}
+
+DoA = zeros(numOfObjects,numOfObjects);
+for i = 1:numOfObjects  %i is index of transmiter
+    for j = 1:numOfObjects  %j is index of receiver
+        if i==j
+            continue;
+        else           
+            y = fft(signalStrength(j,i,:));  
+            [s,w]=pmusic(y,1);
+            [temp, iMax] = max(s);
+            DoA(j,i) = mod(w(iMax)+(7*pi)/4, 2*pi) *180/pi;
+        end
+     end
+end
+DoA(:,:)
+%merge DOA, if less than 10, set second DOA to 900 so that it will never in
+%pairs(kind like merge it)
+for i = 1:numOfObjects  %i is index of transmiter
+    for j = 1:numOfObjects  %j is index of receiver
+        if i==j
+            %nothing
+        else    
+            for z = j+1: numOfObjects
+                if abs(DoA(j,i)-DoA(z,i))<20
+                    DoA(z,i)=900;
+                end
+            end       
+        end
+     end
+end
+
+pairs_number = zeros(numOfObjects); %array that store pair number for each robot
+for i = 1:numOfObjects  %i is index of transmiter
+    for j = 1:numOfObjects  %j is index of receiver
+        if i==j
+            %do nothing
+        else 
+            for z = j+1: numOfObjects
+                a_max = max([DoA(j,i) DoA(z,i)]);
+                a_min = min([DoA(j,i) DoA(z,i)]);
+                if a_max - a_min > 135 &&  a_max - a_min < 225 && z ~= i
+                    pairs_number(i)= pairs_number(i)+1;
+                end
+            end   
+        end
+     end
+end
+pairs_number(:) %just see first 8 values
