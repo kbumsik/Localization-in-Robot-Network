@@ -117,7 +117,7 @@ end
 DoA_difference(:,:) 
 %}
 
-DoA = zeros(numOfObjects,numOfObjects);
+DoA = zeros(numOfObjects);
 for i = 1:numOfObjects  %i is index of transmiter
     for j = 1:numOfObjects  %j is index of receiver
         if i==j
@@ -147,7 +147,7 @@ for i = 1:numOfObjects  %i is index of transmiter
      end
 end
 
-pairs_number = zeros(numOfObjects); %array that store pair number for each robot
+pairs_number = zeros(1,numOfObjects); %array that store pair number for each robot
 for i = 1:numOfObjects  %i is index of transmiter
     for j = 1:numOfObjects  %j is index of receiver
         if i==j
@@ -156,7 +156,7 @@ for i = 1:numOfObjects  %i is index of transmiter
             for z = j+1: numOfObjects
                 a_max = max([DoA(j,i) DoA(z,i)]);
                 a_min = min([DoA(j,i) DoA(z,i)]);
-                if a_max - a_min > 135 &&  a_max - a_min < 225 && z ~= i
+                if (a_max - a_min) > 160 &&  (a_max - a_min < 220) && z ~= i
                     pairs_number(i)= pairs_number(i)+1;
                 end
             end   
