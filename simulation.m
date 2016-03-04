@@ -82,6 +82,7 @@ for i = 1:numOfObjects
     end
 end
 
+%{
 %% Applying pmusic function
 
 DoA = zeros(numOfObjects,numOfObjects);
@@ -109,10 +110,10 @@ for i = 1:numOfObjects  %i is index of transmiter
 end
 
 DoA_difference(:,:) 
+%}
 
 
-%{
-DoA = zeros(numOfObjects);
+DoA = zeros(1,numOfObjects);
 for i = 1:numOfObjects  %i is index of transmiter
     for j = 1:numOfObjects  %j is index of receiver
         if i==j
@@ -151,12 +152,11 @@ for i = 1:numOfObjects  %i is index of transmiter
             for z = j+1: numOfObjects
                 a_max = max([DoA(j,i) DoA(z,i)]);
                 a_min = min([DoA(j,i) DoA(z,i)]);
-                if (a_max - a_min) > 160 &&  (a_max - a_min < 220) && z ~= i
+                if (a_max - a_min) > 155 &&  (a_max - a_min < 205) && z ~= i
                     pairs_number(i)= pairs_number(i)+1;
                 end
             end   
         end
      end
 end
-pairs_number(:) %just see first 8 values
-%}
+pairs_number(:) 
