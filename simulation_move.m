@@ -12,7 +12,7 @@ yField = 1000;       % in meters
 sens = 200;          % in meters
 comm = 100;          % in meters
 reject = 20;        % in meters
-numOfObjects = 8;   % number of robots
+numOfObjects = 10;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
@@ -240,7 +240,7 @@ while (true)
     
     % check if the robots are in comm. range
     for i = 1:numOfObjects
-        for j = i:numOfObjects
+        for j = 1:numOfObjects
             if ((signalStrength(i,j,1) > real(-60)) && (robots_not_change(i) ~= 1))
                 % case 4
                 if(robots_group(i) == 0 && robots_group(j) == 0)
@@ -250,38 +250,34 @@ while (true)
                     robots_leader(i) = 1;
                     robots_following(j) = i;
                     robots_not_change(j) = 1;
-                elseif (robots_group(i) > 1 && robots_group(j) ==0)
+                elseif ( (robots_group(i) > 0) && (robots_group(j) ==0) )
                     robots_group(j) = robots_group(i);
                     robots_following(j) = i;
                     robots_not_change(j) = 1;
-                elseif (robots_group(i) == 0 && robots_group(j) > 1)
+                elseif ( (robots_group(i)) == 0 && (robots_group(j) > 0) )
                     robots_group(i) = robots_group(j);
                     robots_following(i) = j;
                     robots_not_change(i) = 1;
-                elseif (robots_group(i) > 1 && robots_group(j) > 1 && robots_leader(i) == 1 && (robots_group(i) ~= robots_group(j)))
+                elseif ((robots_group(i) > 0) && (robots_group(j) > 0) && (robots_leader(i) == 1) && (robots_group(i) ~= robots_group(j)))
                 % case 5
                     % TODO: check
-                    if (robots_group(i) <= robots_group(j))
-                        i_low = robots_group(i);
-                        if (robots_leader(j) == 1)
-                            robots_leader(j) = 0;
-                            robots_following(j) = i;
-                            robots_not_change(j) = 1;
-                        else
-                            robots_leader(i) = 0;
-                            robots_following(i) = j;
-                            robots_not_change(i) = 1;
-                        end
+                    group_i = robots_group(i);
+                    group_j = robots_group(j);
+                    if (group_i <= group_j)
+                        i_low = group_i;
+                        robots_leader(j) = 0;
+                        robots_following(j) = i;
+                        robots_not_change(j) = 1;
                     else
-                        i_low = robots_group(j);
+                        i_low = group_j;
                         robots_leader(i) = 0;
                         robots_following(i) = j;
                         robots_not_change(i) = 1;
                     end
                     %merge
-                    for tempI = 1:numOfObjects  %i is index of transmiter
-                        if ( (robots_group(tempI) == robots_group(i)) || (robots_group(tempI) == robots_group(j)) )
-                            robots_group(tempI) = i_low;
+                    for temp = 1:numOfObjects  %i is index of transmiter
+                        if ( (robots_group(temp) == group_i) || (robots_group(temp) == group_j) )
+                            robots_group(temp) = i_low;
                         end
                     end
                 end
