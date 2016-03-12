@@ -41,19 +41,41 @@ Tranceiver.m defines the model of the signal transmitter and receiver using clas
 Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four is for receiver. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
 
 When we apply pmusic function to get DOA of each receiver robot from its transmitter robot, we can have the following table as reference:
+
 \begin{center}
-    \begin{tabular}{ | l | l | l | l | l | l | l | l | l |}
+    \begin{tabular}{ | c | c | c | c | c | c | c | c  | c | c |} 
+     
+    \multicolumn{10}{ c }{Transmitter Index}\\ 
     \hline
-    Day & Min Temp & Max Temp & Summary \\ \hline
-    Monday & 11C & 22C & A clear day with lots of sunshine.  
-    However, the strong breeze will bring down the temperatures. \\ \hline
-    Tuesday & 9C & 19C & Cloudy with rain, across many northern regions. Clear spells 
-    across most of Scotland and Northern Ireland, 
-    but rain reaching the far northwest. \\ \hline
-    Wednesday & 10C & 21C & Rain will still linger for the morning. 
-    Conditions will improve by early afternoon and continue 
-    throughout the evening. \\
+    \multicolumn{2}{ |c  }{} &
+    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\
     \hline
+    {\multirow{8}{*}{Receiver} }  &
+
+    1 & 0 & 184.2188 & 90.0000 & 170.1562 & 185.6250 & 163.1250 & 233.4375 & 113.9062  \\ 
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    2 & 0 & 0 & 106.8750 & 37.9688 & 97.0313 & 142.0312 & 352.9688 & 112.5000 \\
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    3 & 322.0313 & 241.8750  &  0 & 251.7188 & 225.0000 & 180.0000 & 302.3438 & 195.4687 \\
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    4 & 352.9688 & 226.4062  & 67.5000   &      0 & 122.3438 & 133.5938 & 284.0625 & 113.9062  \\ 
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    5 & 330.4688 & 282.6563  & 21.0937 & 310.7813    &     0 & 146.2500 & 324.8438 & 167.3438 \\ 
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    6 & 330.4688 & 331.8750  &  1.4062 & 333.2812 & 320.6250    &     0 & 329.0625 & 203.9062   \\ 
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    7 & 22.5000 & 163.1250 &  66.0938 & 104.0625 & 102.6563 & 127.9688     &    0 & 194.0625  \\ 
+    \cline{2-10}
+    \multicolumn{1}{ |c  }{} &
+    8 & 22.5000 & 275.6250 & 345.9375 & 322.0313 & 354.3750 &  16.8750 & 285.4688    &     0  \\ 
+    \hline
+    
     \end{tabular}
 \end{center}
 
