@@ -92,12 +92,15 @@ classdef Signal
         else
             distance = 200;
         end
+      
         % calculate AWGN when SNR = 30
         pl = obj.getPathLoss(distance);
         sigma_db = pl - 30;
         sigma = power(10, sigma_db/10); 
-        Pg = normrnd(pl, sigma);
+        Pg = normrnd(0, sigma);
+        Pg = Pg+ power(10, pl/10);
         Pg = 10*log10(Pg);
+        Pg = pl-Pg;
         
         result = pl + 0.001*getRayleigh(obj) + Pg;
     end

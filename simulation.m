@@ -22,19 +22,13 @@ sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 pointOffset = 5;
 
 % constants for signal
-SNR = 50;
-%when factor_rayleigh=0.001, filtered:
-%SNR=   20 : 90% sucess (18 out of 20)
-%       15 : 90% sucess (18 out of 20)
-%       10 : 90% sucess (18 out of 20)
-%       5  : 95% sucess (19 out of 20)
-%when factor_rayleigh=0.001, not filtered:
-%SNR=   20 : 30% sucess (3 out of 10)
-%       30 : 60% sucess (6 out of 10)
-%       40 : 70% sucess (7 out of 10)
-%       50  : 50% sucess(5 out of 10)
+SNR = 30;
+%when factor_rayleigh=0.001, filtered:   will be much slower
+%SNR=   30 : 90% sucess (9 out of 10)
 
-% ==> SNR doesn't effect much?
+%when factor_rayleigh=0.001, not filtered:
+%SNR=   34 : 90% sucess (9 out of 10)
+
 
 factor_rayleigh = 0.001;
 %factor_rayleigh(max)= 0.001(90%) (18 out of 20)
@@ -88,8 +82,9 @@ for i = 1:numOfObjects
     end
 end
 
-%% Applying pmusic function
 %{
+%% Applying pmusic function
+
 DoA = zeros(numOfObjects,numOfObjects);
 DoA_true = zeros(numOfObjects,numOfObjects);
 DoA_difference = zeros(numOfObjects,numOfObjects);
@@ -117,7 +112,8 @@ end
 DoA_difference(:,:) 
 %}
 
-DoA = zeros(numOfObjects);
+
+DoA = zeros(1,numOfObjects);
 for i = 1:numOfObjects  %i is index of transmiter
     for j = 1:numOfObjects  %j is index of receiver
         if i==j
@@ -156,11 +152,11 @@ for i = 1:numOfObjects  %i is index of transmiter
             for z = j+1: numOfObjects
                 a_max = max([DoA(j,i) DoA(z,i)]);
                 a_min = min([DoA(j,i) DoA(z,i)]);
-                if (a_max - a_min) > 160 &&  (a_max - a_min < 220) && z ~= i
+                if (a_max - a_min) > 155 &&  (a_max - a_min < 205) && z ~= i
                     pairs_number(i)= pairs_number(i)+1;
                 end
             end   
         end
      end
 end
-pairs_number(:) %just see first 8 values
+pairs_number(:) 
