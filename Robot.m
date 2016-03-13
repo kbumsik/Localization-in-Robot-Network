@@ -49,11 +49,19 @@ classdef Robot < handle
       end
       
       % Return signal strength of each receivers
-      function rStrength = getNoisedStrength(obj, targetRobot, signal)
+      function rStrength = getFilteredStrength(obj, targetRobot, signal)
           rStrength =    signal.getFilteredSignalStrength(pdist2(obj.receiver(1).position,targetRobot.position,'euclidean'));
           rStrength(2) = signal.getFilteredSignalStrength(pdist2(obj.receiver(2).position,targetRobot.position,'euclidean'));
           rStrength(3) = signal.getFilteredSignalStrength(pdist2(obj.receiver(3).position,targetRobot.position,'euclidean'));
           rStrength(4) = signal.getFilteredSignalStrength(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
+      end
+
+      % Return signal strength of each receivers
+      function rStrength = getNoisedStrength(obj, targetRobot, signal)
+          rStrength =    signal.getNoised(pdist2(obj.receiver(1).position,targetRobot.position,'euclidean'));
+          rStrength(2) = signal.getNoised(pdist2(obj.receiver(2).position,targetRobot.position,'euclidean'));
+          rStrength(3) = signal.getNoised(pdist2(obj.receiver(3).position,targetRobot.position,'euclidean'));
+          rStrength(4) = signal.getNoised(pdist2(obj.receiver(4).position,targetRobot.position,'euclidean'));
       end
 
       % Return signal strength of each receivers
