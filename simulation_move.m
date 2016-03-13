@@ -12,7 +12,7 @@ yField = 1000;       % in meters
 sens = 200;          % in meters
 comm = 100;          % in meters
 reject = 20;        % in meters
-numOfObjects = 10;   % number of robots
+numOfObjects = 7;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
@@ -64,7 +64,9 @@ end
 
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
-
+sig_comm = getBoundingRSSI(signal,1);
+sig_sense = getBoundingRSSI(signal,2);
+sig_reject = getBoundingRSSI(signal,3);
 %==========================================================================
 
 
@@ -223,7 +225,7 @@ while (true)
     for i = 1:numOfObjects  %i is index of transmiter 
         move_trigger = true;
         if (robots_following(i) > 0)
-            if (signalStrength(i,robots_following(i),1) > real(-60))
+            if (signalStrength(i,robots_following(i),1) > sig_comm)
                     move_trigger= false;
             end
         end
@@ -235,7 +237,7 @@ while (true)
     % check if the robots are in comm. range
     for i = 1:numOfObjects
         for j = 1:numOfObjects
-            if ((signalStrength(i,j,1) > real(-60)) && (robots_not_change(i) ~= 1))
+            if ((signalStrength(i,j,1) > sig_comm) && (robots_not_change(i) ~= 1))
                 % case 4
                 if(robots_group(i) == 0 && robots_group(j) == 0)
                     robots_group(i) = group_index;
