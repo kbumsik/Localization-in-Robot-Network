@@ -42,45 +42,31 @@ Robot.m defines the class of the robot that has five instances of Tranceiver cla
 
 When we apply pmusic function to get DOA of each receiver robot from its transmitter robot, we can have the following table as reference:
 
-\begin{center}
-    \begin{tabular}{ | c | c | c | c | c | c | c | c  | c | c |} 
-     
-    \multicolumn{10}{ c }{Transmitter Index}\\ 
-    \hline
-    \multicolumn{2}{ |c  }{} &
-    1 & 2 & 3 & 4 & 5 & 6 & 7 & 8  \\
-    \hline
-    {\multirow{8}{*}{Receiver} }  &
+\begin{table}[]
+\centering
+\label{Sample DOA data table}
+\resizebox{0.5\textwidth}{!}{%
+\begin{tabular}{|c|l|l|l|l|l|l|l|l|l|}
+\hline
+\multicolumn{1}{|l|}{} &  & \multicolumn{8}{c|}{\textbf{Transmmiter Robot}} \\ \hline
+\multirow{9}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Receiver\\ Robot\end{tabular}}} &  & Robot1 & Robot2 & Robot3 & Robot4 & Robot5 & Robot6 & Robot7 & Robot8 \\ \cline{2-10} 
+ & Robot1 & 0 & 222.1875 & 23.9063 & 284.0625 & 182.8125 & 234.8438 & 220.7813 & 229.2188 \\ \cline{2-10} 
+ & Robot2 & 56.2500 & 0 & 56.2500 & 57.6563 & 113.9062 & 102.6563 & 73.1250 & 187.0312 \\ \cline{2-10} 
+ & Robot3 & 201.0938 & 305.1563 & 0 & 278.4375 & 165.9375 & 227.8125 & 202.5000 & 255.9375 \\ \cline{2-10} 
+ & Robot4 & 146.2500 & 220.7813 & 81.5625 & 0 & 106.8750 & 135.0000 & 229.2188 & 210.9375 \\ \cline{2-10} 
+ & Robot5 & 1.4062 & 286.8750 & 2.8125 & 333.2812 & 0 & 329.0625 & 302.3438 & 284.0625 \\ \cline{2-10} 
+ & Robot6 & 46.4062 & 257.3438 & 36.5625 & 341.7188 & 135.0000 & 0 & 347.3437 & 282.6563 \\ \cline{2-10} 
+ & Robot7 & 95.6250 & 250.3125 & 87.1875 & 30.9375 & 130.7813 & 32.3437 & 0 & 188.4375 \\ \cline{2-10} 
+ & Robot8 & 81.5625 & 33.7500 & 66.0938 & 64.6875 & 85.7813 & 108.2812 & 12.6563 & 0 \\ \hline
+\end{tabular}%
+}
+\caption{Numbers are DOA represented as degrees. 0 means robot is receive its own signal.}
+\end{table}
 
-    1 & 0 & 184.2188 & 90.0000 & 170.1562 & 185.6250 & 163.1250 & 233.4375 & 113.9062  \\ 
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    2 & 0 & 0 & 106.8750 & 37.9688 & 97.0313 & 142.0312 & 352.9688 & 112.5000 \\
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    3 & 322.0313 & 241.8750  &  0 & 251.7188 & 225.0000 & 180.0000 & 302.3438 & 195.4687 \\
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    4 & 352.9688 & 226.4062  & 67.5000   &      0 & 122.3438 & 133.5938 & 284.0625 & 113.9062  \\ 
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    5 & 330.4688 & 282.6563  & 21.0937 & 310.7813    &     0 & 146.2500 & 324.8438 & 167.3438 \\ 
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    6 & 330.4688 & 331.8750  &  1.4062 & 333.2812 & 320.6250    &     0 & 329.0625 & 203.9062   \\ 
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    7 & 22.5000 & 163.1250 &  66.0938 & 104.0625 & 102.6563 & 127.9688     &    0 & 194.0625  \\ 
-    \cline{2-10}
-    \multicolumn{1}{ |c  }{} &
-    8 & 22.5000 & 275.6250 & 345.9375 & 322.0313 & 354.3750 &  16.8750 & 285.4688    &     0  \\ 
-    \hline
-    
-    \end{tabular}
-\end{center}
-
-\subsection{Algorithm}
-One of the challenge of this project is to find the geometric centred robot of the robot group, so that the the movement of robots gather together will become more efficient.  
+\subsection{Signal Modelling}
+\par
+In our signal modelling, we need to test the proper value of SNR, Rayleigh factor for our simulation. According to our test, the maximum proper value of Rayleigh factor is 0.0007 with 90\% (18 out of 20 cases) of success. A success means that all differences of every robot's true DOA and noised DOA are less than 45 degrees. Other values larger than 0.001 will decrease the success probability. This value can be lager as 0.0010 if we apply a low-pass filtered function to the signal. However, it will slow down our test speed, so we decide to use not filtered version of code as speed & cost trade-off. The minimum acceptable SNR is 34 with 90\%(18 out of 20 cases) success. SNR stands for signal noise ratio which will be explained later.
+\\
 
 \subsection{Formula}
 The equation of path loss is:
