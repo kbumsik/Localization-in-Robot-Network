@@ -89,8 +89,10 @@ classdef Signal
     function result = getBoundingRSSI(obj,mode)
         if mode==1 
             distance = 100;
-        else
+        elseif mode==2
             distance = 200;
+        elseif mode==3
+            distance = 50;
         end
       
         % calculate AWGN when SNR = 30
