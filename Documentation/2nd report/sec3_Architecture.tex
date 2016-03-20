@@ -45,7 +45,7 @@ When we apply pmusic function to get DOA of each receiver robot from its transmi
 \begin{table}[]
 \centering
 \label{Sample DOA data table}
-\resizebox{0.5\textwidth}{!}{%
+\resizebox{0.4\textwidth}{!}{%
 \begin{tabular}{|c|l|l|l|l|l|l|l|l|l|}
 \hline
 \multicolumn{1}{|l|}{} &  & \multicolumn{8}{c|}{\textbf{Transmmiter Robot}} \\ \hline
@@ -64,8 +64,7 @@ When we apply pmusic function to get DOA of each receiver robot from its transmi
 \end{table}
 
 \subsection{Signal Modelling}
-\par
-In our signal modelling, we need to test the proper value of SNR, Rayleigh factor for our simulation. According to our test, the maximum proper value of Rayleigh factor is 0.0007 with 90\% (18 out of 20 cases) of success. A success means that all differences of every robot's true DOA and noised DOA are less than 45 degrees. Other values larger than 0.001 will decrease the success probability. This value can be lager as 0.0010 if we apply a low-pass filtered function to the signal. However, it will slow down our test speed, so we decide to use not filtered version of code as speed & cost trade-off. The minimum acceptable SNR is 34 with 90\%(18 out of 20 cases) success. SNR stands for signal noise ratio which will be explained later.
+In our signal modelling, we need to test the proper value of SNR, Rayleigh factor for our simulation. According to our test, the maximum proper value of Rayleigh factor is 0.0007 with 90\% (18 out of 20 cases) of success. A success means that all differences of every robot's true DOA and noised DOA are less than 45 degrees. Other values larger than 0.001 will decrease the success probability. This value can be lager as 0.0010 if we apply a low-pass filtered function to the signal. However, it will slow down our test speed, so we decide to use not filtered version of code as speed and cost trade-off. The minimum acceptable SNR is 34 with 90\%(18 out of 20 cases) success. SNR stands for signal noise ratio which will be explained later.
 \\
 
 \subsection{Formula}
