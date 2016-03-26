@@ -49,7 +49,4 @@ J.J. Leonard and H.F. Durrant-Whyte.
 \newblock {\em Robotics and Automation, IEEE Transactions on}, 7(3):376--382,
   Jun 1991.
 
-\bibitem{speedguide}
-How does rssi (dbm) relate to signal quality (percent) ?
-
 \end{thebibliography}
