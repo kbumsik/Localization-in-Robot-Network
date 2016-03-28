@@ -1,3 +1,4 @@
+function simulation_move()
 %% Firstly clear all
 clc;   clear all;   close all;
 
@@ -86,13 +87,12 @@ end
 %% set plot
 
 field = figure(1);
-plot(0)
-set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
-    'xtick', 0:50:xField, 'ytick', 0:50:yField); % set the limit of the plot
+set (field, 'position', [100 100 xField*0.6*2.6 yField*0.6]);
                      
 %% set variable for algorithm
 robots_group = zeros(1, numOfObjects);
 robots_following = zeros(1, numOfObjects);
+robots_childern = zeros(numOfObjects);
 robots_leader = zeros(1, numOfObjects);
 robots_not_change = zeros(1, numOfObjects);
 group_index = 1;
@@ -281,19 +281,42 @@ while (true)
         end
     end % comm. range case end
     
-    % drawing
+    % =============== first plot =========================
     clf; % Clear drawing
+    plot = subplot(2,2,[1 3]);
     hold on;
+    
+    axis([0,xField, 0, yField]); % limit the size of axis
     % Draw all robots
     for i = 1: numOfObjects;
       drawAll(robot(i));
       % Add description
       str = ['Robot ',num2str(i)];
-      text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left','fontsize',24);
+      text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left','fontsize',12);
     end
-
+    % draw lines
+    for i = 1:numOfObjects
+        if (robots_following(i) ~= 0)
+            drawLine(robot(i),robot(robots_following(i)),signal);
+        end
+    end
+    hold off;
+    
+    % =============== second plot =========================
+    subplot(2,2,2);
+    hold on;
+    for i = 1:numOfObjects
+        if (robots_following(i) ~= 0)
+            drawLine(robot(i),robot(robots_following(i)),signal);
+        end
+    end
+    hold off;
+    % =====================================================
     %draw
     pause (0.2);
     drawnow;
 end
+end
 
+function add_child()
+end

@@ -86,33 +86,33 @@ set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
 
 %% plot distance vs power plot
 figure(2);
+subplot(2,2,1);
 t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
     y(i) = signal.getFilteredSignalStrength(t(i));
 end
 plot(t,y);
-subplot(2,2,1);
 
 %% plot the True distance vs power plot
 
+subplot(2,2,2);
 t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
     y(i) = signal.getTrue(t(i));
 end
 plot(t,y);
-subplot(2,2,2);
 
 
 %% plot the Noised without filtering distance vs power plot
 
+subplot(2,2,3);
 t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
     y(i) = signal.getNoised(t(i));
 end
 plot(t,y);
-subplot(2,2,3);
 
 
