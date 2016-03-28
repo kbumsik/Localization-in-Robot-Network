@@ -36,36 +36,47 @@ The drawCircle.m is used to draw circles on the simulation field to visualize th
 
 The getSignalStrength.m defines our signal model and accepts a distance value as an argument then returns a value of signal Strength. The model of signal will be discussed later.
 
-Tranceiver.m defines the model of the signal transmitter and receiver using class. This class has four kinds of class member: sensory, communication, reject, and position. The class member sensory, communication, and reject are floating points in meters, representing those name of range. The class member position represents four 
+Tranceiver.m defines the model of the signal transmitter and receiver using class. This class has four kinds of class member: sensory, communication, reject, and position. The class member sensory, communication, and reject are floating points in meters, representing those name of range. The class member position represents four antennas location of a robot.
 
 Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four is for receiver. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
 
-When we apply pmusic function to get DOA of each receiver robot from its transmitter robot, we can have the following table as reference:
+
+
+\subsection{Signal Modelling}
+In our signal modelling, we need to test the proper value of SNR, Rayleigh factor for our simulation. According to our test, the maximum proper value of Rayleigh factor is 0.0007 with 90\% (18 out of 20 cases) of success. A success means that all differences of every robot's true DOA and noised DOA are less than 45 degrees. Other values larger than 0.001 will decrease the success probability. This value can be lager as 0.0010 if we apply a low-pass filtered function to the signal. However, it will slow down our test speed, so we decide to use not filtered version of code as speed and cost trade-off. The minimum acceptable SNR is 34 with 90\%(18 out of 20 cases) success. SNR stands for signal noise ratio which will be explained later.
+\par
+	When we apply pmusic function to get DOA of each receiver robot from its transmitter robot, we can have the following table as reference:
 
 \begin{table}[]
 \centering
 \label{Sample DOA data table}
 \resizebox{0.4\textwidth}{!}{%
-\begin{tabular}{|c|l|l|l|l|l|l|l|l|l|}
+\begin{tabular}{|c|l|l|l|l|l|}
 \hline
-\multicolumn{1}{|l|}{} &  & \multicolumn{8}{c|}{\textbf{Transmmiter Robot}} \\ \hline
-\multirow{9}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Receiver\\ Robot\end{tabular}}} &  & Robot1 & Robot2 & Robot3 & Robot4 & Robot5 & Robot6 & Robot7 & Robot8 \\ \cline{2-10} 
- & Robot1 & 0 & 222.1875 & 23.9063 & 284.0625 & 182.8125 & 234.8438 & 220.7813 & 229.2188 \\ \cline{2-10} 
- & Robot2 & 56.2500 & 0 & 56.2500 & 57.6563 & 113.9062 & 102.6563 & 73.1250 & 187.0312 \\ \cline{2-10} 
- & Robot3 & 201.0938 & 305.1563 & 0 & 278.4375 & 165.9375 & 227.8125 & 202.5000 & 255.9375 \\ \cline{2-10} 
- & Robot4 & 146.2500 & 220.7813 & 81.5625 & 0 & 106.8750 & 135.0000 & 229.2188 & 210.9375 \\ \cline{2-10} 
- & Robot5 & 1.4062 & 286.8750 & 2.8125 & 333.2812 & 0 & 329.0625 & 302.3438 & 284.0625 \\ \cline{2-10} 
- & Robot6 & 46.4062 & 257.3438 & 36.5625 & 341.7188 & 135.0000 & 0 & 347.3437 & 282.6563 \\ \cline{2-10} 
- & Robot7 & 95.6250 & 250.3125 & 87.1875 & 30.9375 & 130.7813 & 32.3437 & 0 & 188.4375 \\ \cline{2-10} 
- & Robot8 & 81.5625 & 33.7500 & 66.0938 & 64.6875 & 85.7813 & 108.2812 & 12.6563 & 0 \\ \hline
+\multicolumn{2}{|l|}{} & \multicolumn{4}{c|}{{\color[HTML]{009901} \textbf{Transmmiter Robot}}} \\ \hline
+{\color[HTML]{FE0000} } &  & {\color[HTML]{009901} \textbf{Robot1}} & {\color[HTML]{009901} \textbf{Robot2}} & {\color[HTML]{009901} \textbf{Robot3}} & {\color[HTML]{009901} \textbf{Robot4}} \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot1}} & 0 & 222.1875 & 23.9063 & 284.0625 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot2}} & 56.2500 & 0 & 56.2500 & 57.6563 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot3}} & 201.0938 & 305.1563 & 0 & 278.4375 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot4}} & 146.2500 & 220.7813 & 81.5625 & 0 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot5}} & 1.4062 & 286.8750 & 2.8125 & 333.2812 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot6}} & 46.4062 & 257.3438 & 36.5625 & 341.7188 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot7}} & 95.6250 & 250.3125 & 87.1875 & 30.9375 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot8}} & 81.5625 & 33.7500 & 66.0938 & 64.6875 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{}} & {\color[HTML]{009901} \textbf{Robot5}} & {\color[HTML]{009901} \textbf{Robot6}} & {\color[HTML]{009901} \textbf{Robot7}} & {\color[HTML]{009901} \textbf{Robot8}} \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot1}} & 182.8125 & 234.8438 & 220.7813 & 229.2188 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot2}} & 113.9062 & 102.6563 & 73.1250 & 187.0312 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot3}} & 165.9375 & 227.8125 & 202.5000 & 255.9375 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot4}} & 106.8750 & 135.0000 & 229.2188 & 210.9375 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot5}} & 0 & 329.0625 & 302.3438 & 284.0625 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot6}} & 135.0000 & 0 & 347.3437 & 282.6563 \\ \cline{2-6} 
+{\color[HTML]{FE0000} } & {\color[HTML]{FE0000} \textbf{Robot7}} & 130.7813 & 32.3437 & 0 & 188.4375 \\ \cline{2-6} 
+\multirow{-18}{*}{{\color[HTML]{FE0000} \textbf{\begin{tabular}[c]{@{}c@{}}Receiver\\ Robot\end{tabular}}}} & {\color[HTML]{FE0000} \textbf{Robot8}} & 85.7813 & 108.2812 & 12.6563 & 0 \\ \hline
 \end{tabular}%
 }
 \caption{Numbers are DOA represented as degrees. 0 means robot is receive its own signal.}
 \end{table}
 
-\subsection{Signal Modelling}
-In our signal modelling, we need to test the proper value of SNR, Rayleigh factor for our simulation. According to our test, the maximum proper value of Rayleigh factor is 0.0007 with 90\% (18 out of 20 cases) of success. A success means that all differences of every robot's true DOA and noised DOA are less than 45 degrees. Other values larger than 0.001 will decrease the success probability. This value can be lager as 0.0010 if we apply a low-pass filtered function to the signal. However, it will slow down our test speed, so we decide to use not filtered version of code as speed and cost trade-off. The minimum acceptable SNR is 34 with 90\%(18 out of 20 cases) success. SNR stands for signal noise ratio which will be explained later.
-\\
 
 \subsection{Formula}
 The equation of path loss is:
@@ -104,14 +115,22 @@ where $L(d)$ is the path loss, $p_{G}(x)$ is the Gaussian White Noise, and $p_{R
 \vspace{1cm}
 
 
-The frequency estimation function for MUSIC is:
-\begin{equation}
-\hat P_{MU}(e^{j \omega}) = \frac{1}{\sum_{i=p+1}^{M} |\mathbf{e}^{H} \mathbf{v}_i|^2},
-\end{equation}
-where $\mathbf{v}_i$ are the noise eigenvectors and
+
+If $\mathbf{v}_i$ are the noise eigenvectors and
 \begin{equation}
 \mathbf{e} = \begin{bmatrix}1 & e^{j \omega} & e^{j 2 \omega} & \cdots & e^{j (M-1) \omega}\end{bmatrix}^T.
 \end{equation}
+Then the frequency estimation function for MUSIC is:
+\begin{equation}
+\hat P_{MU}(e^{j \omega}) = \frac{1}{\sum_{i=p+1}^{M} |\mathbf{e}^{H} \mathbf{v}_i|^2},
+\end{equation}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{MusicGraph}
+	\caption{Power Spectrum Using MUSIC}
+	%\label{fig1}s
+	\end{figure}
+Spectral density estimation is to estimate the spectral density of a random signal from a sequence of time samples of the signal. In our case, the maximum value of $hat P_{MU}$ converted to degrees is the DOA of robots.
 %\begin{figure}[h]
 %\centering
 %\includegraphics[width=0.8\linewidth]{img/img1}
