@@ -22,41 +22,17 @@ sigmaNoise = 2;     % standard deviation parameter of the gaussian noise
 pointOffset = 5;
 
 % constants for signal
-SNR = 15;
-factor_rayleigh = 0.1;
+SNR = 10;
+factor_rayleigh = 0.2;
 
 %===================================
-
-%% Create objects
-for i = 1: numOfObjects;
-    check = 1;
-    randX = sens+rand()*(xField-2*sens);
-    randY = sens+rand()*(yField-2*sens);
-    if i > 1
-       while (check == 1)
-           check = 0;
-            randX = sens+rand()*(xField-2*sens);
-            randY = sens+rand()*(yField-2*sens);
-           for j = 1:i-1;
-               result = (randX-robot(j).getX)^2 + (randY-robot(j).getY)^2 - (reject*2)^2;
-              if ( result < 0 )
-                  check = 1;
-              end
-           end
-       end
-       robot(i) = Robot(randX, randY, sens, comm, reject);
-    else
-        robot(i) = Robot(randX, randY, sens, comm, reject);
-    end
-    
-end
 
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
 
 %% Display
-field = figure(1);
-set(field,'position',[200,200,xField*1.1,yField*1.1]); % set window size
+figure();
+%% plot the True distance vs power plot
 
  
 plot(0)
@@ -85,32 +61,33 @@ set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
 
 
 %% plot distance vs power plot
-figure(2);
-t = [1:1:600];
-y = zeros(size(t));
-for i = 1: length(t)
-    y(i) = signal.getFilteredSignalStrength(t(i));
-end
-plot(t,y);
 subplot(2,2,1);
-
-%% plot the True distance vs power plot
-
 t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
     y(i) = signal.getTrue(t(i));
 end
 plot(t,y);
-subplot(2,2,2);
-
+subplot(2,2,1);
 
 %% plot the Noised without filtering distance vs power plot
 
+subplot(2,2,2);
 t = [1:1:600];
 y = zeros(size(t));
 for i = 1: length(t)
     y(i) = signal.getNoised(t(i));
+end
+plot(t,y);
+subplot(2,2,2);
+
+
+%% plot distance vs power plot
+subplot(2,2,3);
+t = [1:1:600];
+y = zeros(size(t));
+for i = 1: length(t)
+    y(i) = signal.getFilteredSignalStrength(t(i));
 end
 plot(t,y);
 subplot(2,2,3);

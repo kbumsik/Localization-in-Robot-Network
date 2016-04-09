@@ -12,7 +12,7 @@ yField = 1000;       % in meters
 sens = 200;          % in meters
 comm = 100;          % in meters
 reject = 20;        % in meters
-numOfObjects = 7;   % number of robots
+numOfObjects = 3;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
