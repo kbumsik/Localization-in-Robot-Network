@@ -79,7 +79,7 @@ classdef Robot < handle
           plot(x,y);
           % Add description
           str = ['Avg. Str.', num2str(mean(getNoisedStrength(obj, targetRobot, signal))), 'db'];
-          text(mean(x),mean(y),str,'HorizontalAlignment','left','fontsize',18);
+          text(mean(x),mean(y),str,'HorizontalAlignment','left','fontsize',10);
       end
       
       % get distance between two robots
