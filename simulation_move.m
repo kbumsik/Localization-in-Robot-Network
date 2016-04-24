@@ -1,3 +1,4 @@
+function simulation_move()
 %% Firstly clear all
 clc;   clear all;   close all;
 
@@ -12,7 +13,7 @@ yField = 1000;       % in meters
 sens = 200;          % in meters
 comm = 100;          % in meters
 reject = 20;        % in meters
-numOfObjects = 7;   % number of robots
+numOfObjects = 8;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
@@ -86,13 +87,12 @@ end
 %% set plot
 
 field = figure(1);
-plot(0)
-set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
-    'xtick', 0:50:xField, 'ytick', 0:50:yField); % set the limit of the plot
+set (field, 'position', [100 100 xField*0.6*2.6 yField*0.6]);
                      
 %% set variable for algorithm
 robots_group = zeros(1, numOfObjects);
 robots_following = zeros(1, numOfObjects);
+robots_childern = zeros(numOfObjects);
 robots_leader = zeros(1, numOfObjects);
 robots_not_change = zeros(1, numOfObjects);
 group_index = 1;
@@ -111,7 +111,8 @@ for i = 1:numOfObjects  %i is index of transmiter
         end
      end
 end
-DoA(:,:)
+%DoA(:,:)
+
 %merge DOA, if less than 10, set second DOA to 900 so that it will never in
 %pairs(kind like merge it)
 for i = 1:numOfObjects  %i is index of transmiter
@@ -190,7 +191,7 @@ while (true)
             DoA_true(j,i) = mod(w2(iMax2)+(7*pi)/4, 2*pi) *180/pi;
         end
     end
-    DoA_true(:,:)
+ %   DoA_true(:,:)
     
     % mark "following"
     for i = 1:numOfObjects  %i is index of transmiter
@@ -281,19 +282,68 @@ while (true)
         end
     end % comm. range case end
     
-    % drawing
+    
+    %get each distance
+dis = zeros(numOfObjects,numOfObjects);
+for i = 1:numOfObjects  %i is index of transmiter
+        for j = 1:numOfObjects
+            if (i ==j)
+                % set lowest
+                dis(i,j) = 0;
+                continue
+            end
+            dis(i,j) = getDistance(robot(j),robot(i));          
+        end
+end
+dis(:,:)
+%get overlap area of 2 circles
+areaOf2 = zeros(numOfObjects,numOfObjects);
+for j = 1:numOfObjects  
+      for i = j+1:numOfObjects  %i is index of transmiter
+          areaOf2(i,j)=getOverLapof2Circle(dis(j,i));
+      end
+end
+areaOf2(:,:)
+    % =============== first plot =========================
     clf; % Clear drawing
+    plot = subplot(2,2,[1 3]);
     hold on;
+    
+    axis([0,xField, 0, yField]); % limit the size of axis
     % Draw all robots
     for i = 1: numOfObjects;
       drawAll(robot(i));
       % Add description
       str = ['Robot ',num2str(i)];
-      text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left','fontsize',24);
+      text(robot(i).getX()+pointOffset,robot(i).getY()+pointOffset,str,'HorizontalAlignment','left','fontsize',12);
     end
-
+    % draw lines
+    for i = 1:numOfObjects
+        if (robots_following(i) ~= 0)
+  %          drawLine(robot(i),robot(robots_following(i)),signal);
+        end
+    end
+    hold off;
+    
+    % =============== second plot =========================
+    subplot(2,2,2);
+    hold on;
+    for i = 1:numOfObjects
+        if (robots_following(i) ~= 0)
+            drawLine(robot(i),robot(robots_following(i)),signal);
+        end
+    end
+    hold off;
+    % =====================================================
     %draw
     pause (0.2);
     drawnow;
+end
+
+
+
+end
+
+function add_child()
 end
 

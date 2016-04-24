@@ -78,7 +78,8 @@ classdef Robot < handle
           y = [obj.getY(), targetRobot.getY()];
           plot(x,y);
           % Add description
-          str = ['Avg. Str.', num2str(mean(getNoisedStrength(obj, targetRobot, signal))), 'db'];
+       %   str = ['Avg. Str.', num2str(mean(getNoisedStrength(obj, targetRobot, signal))), 'db'];
+          str = [ num2str( getDistance (obj,targetRobot)  ), 'm'];
           text(mean(x),mean(y),str,'HorizontalAlignment','left','fontsize',18);
       end
       
