@@ -282,7 +282,7 @@ while (true)
         end
     end % comm. range case end
     
-    
+%{    
     %get each distance
 dis = zeros(numOfObjects,numOfObjects);
 for i = 1:numOfObjects  %i is index of transmiter
@@ -304,6 +304,14 @@ for j = 1:numOfObjects
       end
 end
 areaOf2(:,:)
+%}
+    %show location of robots
+  for i = 1:numOfObjects
+      disp(['x' num2str(i) '='  num2str(robot(i).getX())]);
+      disp(['y' num2str(i) '='  num2str(robot(i).getY())]);
+  end
+  
+    
     % =============== first plot =========================
     clf; % Clear drawing
     plot = subplot(2,2,[1 3]);

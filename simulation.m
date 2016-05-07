@@ -39,6 +39,7 @@ factor_rayleigh = 0.001;
 %===================================
 
 %% Create objects
+
 for i = 1: numOfObjects;
     check = 1;
     randX = sens+rand()*(xField-2*sens);
@@ -61,6 +62,7 @@ for i = 1: numOfObjects;
     end
     
 end
+
 
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);

@@ -34,3 +34,25 @@
 	\caption{Four sample simulations}
 	%\label{fig1}
 	\end{figure}
+
+\par
+When robots are gathering together within their communication range, we can evaluate the coverage area of the robot network 
+system. The ideal maximum range is when each robot's center is located on the edge of other robot's communication range with the first three leading robots forms triangle group like the following graph.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.4\textwidth]{ideal}
+	\caption{Ideal coverage}
+	%\label{fig1}
+	\end{figure}
+	
+The area of ideal case is 1.6058e+05 square meters over 1000*1000 square meters moving area. However, the simulation coverage area is always smaller than ideal area.
+The following graph is one of the example of simulation. Eight robots are gathering together and the right graph is their 
+topology graph. 
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{sample}
+	\caption{Simulation sample}
+	%\label{fig1}
+	\end{figure}
+We calculate the area of simulation area by the number of random points located in coverage area over total number of points
+in moving area times the moving area. To get accurate coverage area, we apply 1000 million random points. The result is 1.5883e+05 square meters. So the coverage difference between ideal and simulation is 1.09 \%.
