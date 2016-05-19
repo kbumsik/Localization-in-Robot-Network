@@ -13,7 +13,7 @@ yField = 1000;       % in meters
 sens = 200;          % in meters
 comm = 100;          % in meters
 reject = 20;        % in meters
-numOfObjects = 7;   % number of robots
+numOfObjects = 8;   % number of robots
 Pt = 100;           % in decibel(db)
 freq = 2000000000;	% in hertz =>2Gigahertz
 CONST_C = 299792458;    % speed of light (m/s)
@@ -111,7 +111,8 @@ for i = 1:numOfObjects  %i is index of transmiter
         end
      end
 end
-DoA(:,:)
+%DoA(:,:)
+
 %merge DOA, if less than 10, set second DOA to 900 so that it will never in
 %pairs(kind like merge it)
 for i = 1:numOfObjects  %i is index of transmiter
@@ -190,7 +191,7 @@ while (true)
             DoA_true(j,i) = mod(w2(iMax2)+(7*pi)/4, 2*pi) *180/pi;
         end
     end
-    DoA_true(:,:)
+ %   DoA_true(:,:)
     
     % mark "following"
     for i = 1:numOfObjects  %i is index of transmiter
@@ -281,6 +282,36 @@ while (true)
         end
     end % comm. range case end
     
+%{    
+    %get each distance
+dis = zeros(numOfObjects,numOfObjects);
+for i = 1:numOfObjects  %i is index of transmiter
+        for j = 1:numOfObjects
+            if (i ==j)
+                % set lowest
+                dis(i,j) = 0;
+                continue
+            end
+            dis(i,j) = getDistance(robot(j),robot(i));          
+        end
+end
+dis(:,:)
+%get overlap area of 2 circles
+areaOf2 = zeros(numOfObjects,numOfObjects);
+for j = 1:numOfObjects  
+      for i = j+1:numOfObjects  %i is index of transmiter
+          areaOf2(i,j)=getOverLapof2Circle(dis(j,i));
+      end
+end
+areaOf2(:,:)
+%}
+    %show location of robots
+  for i = 1:numOfObjects
+      disp(['x' num2str(i) '='  num2str(robot(i).getX())]);
+      disp(['y' num2str(i) '='  num2str(robot(i).getY())]);
+  end
+  
+    
     % =============== first plot =========================
     clf; % Clear drawing
     plot = subplot(2,2,[1 3]);
@@ -297,7 +328,7 @@ while (true)
     % draw lines
     for i = 1:numOfObjects
         if (robots_following(i) ~= 0)
-            drawLine(robot(i),robot(robots_following(i)),signal);
+  %          drawLine(robot(i),robot(robots_following(i)),signal);
         end
     end
     hold off;
@@ -320,3 +351,4 @@ end
 
 function add_child()
 end
+

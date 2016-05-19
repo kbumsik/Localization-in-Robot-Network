@@ -28,6 +28,7 @@ factor_rayleigh = 0.1;
 %===================================
 
 %% Create objects
+%{
 for i = 1: numOfObjects;
     check = 1;
     randX = sens+rand()*(xField-2*sens);
@@ -50,6 +51,12 @@ for i = 1: numOfObjects;
     end
     
 end
+%}
+X=[200 300 250 250 250 250 250 250];
+Y=[800 800 800-50*sqrt(3) 700-50*sqrt(3) 600-50*sqrt(3) 500-50*sqrt(3) 400-50*sqrt(3) 300-50*sqrt(3)];
+for i = 1: numOfObjects;
+    robot(i) = Robot(X(i), Y(i), sens, comm, reject);
+end
 
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
@@ -69,6 +76,7 @@ for i = 1: numOfObjects;
 end
 
 % draw lines
+%{
 for i = 1:numOfObjects
     for j = i:numOfObjects
         if (i ==j)
@@ -77,7 +85,7 @@ for i = 1:numOfObjects
         drawLine(robot(i),robot(j),signal);
     end
 end
-
+%}
 hold off;
 
 set (gca,'xlim',[0 xField],'ylim',[0 yField], ...

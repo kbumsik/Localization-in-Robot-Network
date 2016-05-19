@@ -1,7 +1,17 @@
 \section{Introduction}
 \label{sec:introduction}
 \subsection{Background}
-	There are many robots created to improve quality of our life, so the AI of robots can make a great contribution. What's more, we may want to easily find a specific room location even when we are not familiar with the place. We can navigate our outdoor position with GPS, but it is hard for us to know our indoor position with our smart devices. All of these problems lead to the topic on how to implement the localization of our robots.
+	There are many robots created to improve quality of our life, one of the robot example is Roomba. Roomba is a series of autonomous robotic vacuum cleaners sold by iRobot. Roomba features a set of basic sensors that enable it perform its tasks. For instance, the Roomba is able to change direction on encountering obstacles, to detect dirty spots on the floor, and to sense steep drops to keep it from falling down stairs. \cite{wiki:Roomba} 
+	\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.45\textwidth]{roomba}
+	\caption{Roomba}
+	%\label{fig1}
+	\end{figure}
+	\par
+	
+
+	However, when multiple Roomba robots are used, it is hard for them to avoid collision and communicate with each other, so the AI of robots that can localize themselves can make a great contribution. What's more, we may want to easily find a specific room location even when we are not familiar with the place.  We can navigate our outdoor position with GPS, but it is hard for us to know our indoor position with our smart devices. All of these problems lead to the topic on how to implement the localization of our robots.
 \par
 	In terms of localization, our method is to find direction first and measure the distance along with the direction. There are several algorithms of direction of arrival, we choose to use MUSIC algorithm , stands for MUiltiple SIgnal Classification, one of the high resolution subspace DOA algorithms, which gives the estimation of number of signals arrived, hence their direction of arrival. Compare with other algorithm, it is able to estimate frequencies with accuracy higher than one sample, because its estimation function can be evaluated for any frequency. This is a form of superresolution. MUSIC estimates the frequency content of a signal or autocorrelation matrix using an eigenspace method. This method assumes that a signal, $x(n)$, consists of $p$ complex exponentials in the presence of Gaussian white noise. Given an $M \times M$ autocorrelation matrix, $\mathbf{R}_x$, if the eigenvalues are sorted in decreasing order, the eigenvectors corresponding to the p largest eigenvalues (i.e. directions of largest variability) span the signal subspace. The remaining $M-p$ eigenvectors span the orthogonal space, where there is only noise. Note that for $M = p + 1$, MUSIC is identical to Pisarenko harmonic decomposition. The general idea is to use averaging to improve the performance of the Pisarenko estimator. The equation of MUSIC will be described later. Figure 1 shows the MUSIC algorithm. \cite{wiki:MUSIC} \cite{music}
 	\begin{figure}[ht]
