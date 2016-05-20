@@ -27,9 +27,9 @@ classdef Tranceiver < handle
       end
 
       function drawAll(obj)
-         drawSensory(obj);
+     %    drawSensory(obj);
          drawCommunication(obj);
-         drawReject(obj);
+      %   drawReject(obj);
       end
       
       function x = getX(obj)

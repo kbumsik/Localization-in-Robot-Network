@@ -1,6 +1,6 @@
 \section{Methodology}
 \subsection{Simulation Procedure}
-We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we use. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian white noise and Rayleigh fading are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DoA.
+We introduce the overall simulation procedure to achieve our goal. The basic idea of the simulation is to verify and visualize the theories we used. We firstly set signal models to be used to measure waveform and signal strength. Path Loss, Gaussian white noise and Rayleigh fading are used in this step. Secondly, we design a model of robots that has a transmitter and receivers, and simulation field where the robots are placed and our algorithm are applied. Then we apply MUSIC algorithm to estimate the DOA.
 
 
 \begin{figure}[ht]
@@ -10,7 +10,7 @@ We introduce the overall simulation procedure to achieve our goal. The basic ide
 	%\label{fig1}
 	\end{figure}
 	
-In the simulation is designed to see locations of robots and estimated distance by signal strength measured by robot's receivers. The location of the robots and some ranges from the robot are marked. The simulation assumes that field is a 2-D space that ranges 1000 meters by 1000 meters. The robots consist of a transmitter and four receivers with a interval of 0.6 meters. The marked range from robots are 200 meters and 100 meters and 20 meters representing the sensory range and the communication range, the rejection range respectively.
+The simulation is designed to see locations of robots and estimated distance by signal strength measured by robot's receivers. The location of the robots and some ranges from the robot are marked. The simulation assumes that field is a 2-D space that ranges 1000 meters by 1000 meters. The robots consist of a transmitter and four receivers with a interval of 0.6 meters. The marked range from robots are 200 meters and 100 meters and 20 meters representing the sensory range, the communication range and the rejection range respectively.
 
 
 
@@ -36,11 +36,16 @@ The drawCircle.m is used to draw circles on the simulation field to visualize th
 
 The getSignalStrength.m defines our signal model and accepts a distance value as an argument then returns a value of signal Strength. The model of signal will be discussed later.
 
-Tranceiver.m defines the model of the signal transmitter and receiver using class. This class has four kinds of class member: sensory, communication, reject, and position. The class member sensory, communication, and reject are floating points in meters, representing those name of range. The class member position represents four antennas location of a robot.
+Tranceiver.m defines the model of the signal transmitter and receiver using class. This class has four kinds of class member: sensory, communication, reject, and position. The class member sensory, communication, and reject are floating points in meters, representing those names of range. The class member position represents four antennas location of a robot.
 
-Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four is for receiver. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
+Robot.m defines the class of the robot that has five instances of Tranceiver class:one is for transmitter and the other four are for receivers. This class has a method getStrength() that takes another instance of Robot and calculate signal strength between two robots. 
 
-
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{RoombaTwo}
+	\caption{Roomba}
+	%\label{fig1}
+	\end{figure}
 
 \subsection{Signal Modelling}
 In our signal modelling, we need to test the proper value of SNR, Rayleigh factor for our simulation. According to our test, the maximum proper value of Rayleigh factor is 0.0007 with 90\% (18 out of 20 cases) of success. A success means that all differences of every robot's true DOA and noised DOA are less than 45 degrees. Other values larger than 0.001 will decrease the success probability. This value can be lager as 0.0010 if we apply a low-pass filtered function to the signal. However, it will slow down our test speed, so we decide to use not filtered version of code as speed and cost trade-off. The minimum acceptable SNR is 34 with 90\%(18 out of 20 cases) success. SNR stands for signal noise ratio which will be explained later.
@@ -74,7 +79,7 @@ In our signal modelling, we need to test the proper value of SNR, Rayleigh facto
 \multirow{-18}{*}{{\color[HTML]{FE0000} \textbf{\begin{tabular}[c]{@{}c@{}}Receiver\\ Robot\end{tabular}}}} & {\color[HTML]{FE0000} \textbf{Robot8}} & 85.7813 & 108.2812 & 12.6563 & 0 \\ \hline
 \end{tabular}%
 }
-\caption{Numbers are DOA represented as degrees. 0 means robot is receive its own signal.}
+\caption{Numbers are DOA represented in degrees. 0 means robot is receiving its own signal.}
 \end{table}
 
 

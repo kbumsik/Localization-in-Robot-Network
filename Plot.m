@@ -27,6 +27,40 @@ factor_rayleigh = 0.2;
 
 %===================================
 
+<<<<<<< HEAD
+=======
+%% Create objects
+%{
+for i = 1: numOfObjects;
+    check = 1;
+    randX = sens+rand()*(xField-2*sens);
+    randY = sens+rand()*(yField-2*sens);
+    if i > 1
+       while (check == 1)
+           check = 0;
+            randX = sens+rand()*(xField-2*sens);
+            randY = sens+rand()*(yField-2*sens);
+           for j = 1:i-1;
+               result = (randX-robot(j).getX)^2 + (randY-robot(j).getY)^2 - (reject*2)^2;
+              if ( result < 0 )
+                  check = 1;
+              end
+           end
+       end
+       robot(i) = Robot(randX, randY, sens, comm, reject);
+    else
+        robot(i) = Robot(randX, randY, sens, comm, reject);
+    end
+    
+end
+%}
+X=[200 300 250 250 250 250 250 250];
+Y=[800 800 800-50*sqrt(3) 700-50*sqrt(3) 600-50*sqrt(3) 500-50*sqrt(3) 400-50*sqrt(3) 300-50*sqrt(3)];
+for i = 1: numOfObjects;
+    robot(i) = Robot(X(i), Y(i), sens, comm, reject);
+end
+
+>>>>>>> origin/bumsik
 %% Signal Object
 signal = Signal(SNR, factor_rayleigh);
 
@@ -45,6 +79,7 @@ for i = 1: numOfObjects;
 end
 
 % draw lines
+%{
 for i = 1:numOfObjects
     for j = i:numOfObjects
         if (i ==j)
@@ -53,7 +88,7 @@ for i = 1:numOfObjects
         drawLine(robot(i),robot(j),signal);
     end
 end
-
+%}
 hold off;
 
 set (gca,'xlim',[0 xField],'ylim',[0 yField], ...
