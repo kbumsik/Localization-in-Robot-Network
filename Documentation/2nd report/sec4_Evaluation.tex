@@ -41,6 +41,32 @@
 	\end{figure}
 
 
+\subsection{Applying a gathering algorithm}
+\par
+A network of multiple robots needs to gather robots in the communication range. When multiple robots are placed randomly in a field, the robots firstly need to gather each other until each robots of the network in within the communication range of another robots. A gathering algorithm is applied based on DoA and RSSI acquired from antennas of a robot.
+\par
+This algorithm is based on the Divide and Conquer algorithm, which firstly group adjacent robots and merge the groups until there is only one big group that covers the all robots in the network. The steps below is used to implement this algorithm. Each robots has four variables: the number of a group a robot belongs to, the number of a robot that the robot is following and moving towards, a mark if the robot is a leader of the group, and a mark that the variables mentioned before, excepts the first one, will not change.
+
+\begin{enumerate}
+	\item Select one robot as a root of a network. This root robot is marked as not following any robot and not changing, meaning that the root always holds its position. All robots are not given a group.
+	\item Acquire RSSI and DoA. Each robots will follow the a robot that has the strongest RSSI and is not in the same group. The robots marks as not change will not change a following robot.
+	\item Move robots towards a following robot for a unit time. If a robot is within a communication range of a following robot, the robot will not move during the unit time. Also, if these adjacent robot are not in any group yet, group them and one robot become a leader and the other robot will follow the leader and is marked as not changing.
+	\item If one of the two adjacent robots is in a group and the other robot is not in a group yet, merge them and the robot was not in a group will follow the merging robot and is  marked as not changing.
+	\item If the two adjacent robots are in different group and one robot is a leader of a group, the leader robot and the robots in the leader's robot will merge into the adjacent group and the leader robot will loose leadership, follow the adjacent robot and be marked as not changing.
+	\item Repeat from step (2) until all robots belongs to the root's group.
+\end{enumerate}
+
+\par
+With this algorithm, the randomly places robots gather together as seen in the following figure.
+	
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=0.5\textwidth]{sample}
+	\caption{Simulation sample}
+	%\label{fig1}
+	\end{figure}
+
+
 \subsection{Coverage Area(2-D)}
 \par
 When robots are gathering together within their communication range, we can evaluate the coverage area of the robot network 
@@ -55,12 +81,7 @@ system. The ideal maximum range is when each robot's center is located on the ed
 The geometrical result of ideal area is 1.6058e+05 square meters over 1000*1000 square meters moving area. However, the simulation coverage area is always smaller than ideal area.
 The following graph is one of the example of simulation. Eight robots are gathering together and the right graph is their 
 topology graph. 
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.5\textwidth]{sample}
-	\caption{Simulation sample}
-	%\label{fig1}
-	\end{figure}
+
 Since geometrical result is too complicated to calculate when simulation could have so many shapes, we decide to calculate the area of simulation area by Monte Carlo method, a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. we can simply calculate the number of random points located in coverage area over total number of points in moving area times the moving area. To get accurate coverage area, we apply 1000 million random points. The result is 1.5883e+05 square meters. So the coverage difference between ideal and simulation is 1.09 \%.
 
 
